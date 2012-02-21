@@ -1,0 +1,28 @@
+<!DOCTYPE=html>
+<html>
+
+	<head>
+
+		<link href="css/jquery.zrssfeed.css"rel="stylesheet">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js" type="text/javascript"></script>
+		<script src="jquery.zrssfeed.min.js" type="text/javascript"></script>
+		<script src="possJSONparse.js"></script>
+
+	</head>
+
+	<body>
+		<div id="test"></div>
+
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('#test').rssfeed('http://feeds.reuters.com/reuters/oddlyEnoughNews', {
+			    		limit: 5
+			  	});
+			});
+		</script>
+
+		<script src="http://spreadsheets.googlec.com/feeds/list/0Avo24gV3_en0dC1WdVpKZ211NzlrbVZoby1QOGx3SFE/1/public/basic?alt=json-in-script&callback=myFunc"></script>
+	</body>
+
+</html>
