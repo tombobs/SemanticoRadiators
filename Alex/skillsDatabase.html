@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="enGB">
+    <head>
+        <meta http-equiv="Content-Type"content="text/html;charset=utf-8"/>
+        <meta name="keywords"content>
+        <title></title>
+        <meta name="description"content="">
+        <meta name="author"content="">
+        <meta name="viewport"content="width=device-width,initial-scale=1.0">
+        <link href="bootstrap.css"rel="stylesheet">
+        <link href="bootstrap-responsive.css"rel="stylesheet">
+        <link href="override.css"rel="stylesheet">
+
+        <!--
+        <link rel="shortcut icon"href="assets/ico/favicon.ico">
+        <link rel="apple-touch-icon"href="assets/ico/apple-touch-icon.png">-->
+    </head>
+
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar pull-left"data-toggle="collapse"data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand"href="http://www.semantico.com">Semantico</a>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li class=""><a href="https://intra.semantico.net/wiki">Wiki</a></li>
+                            <li class="active"><a href="~/SemanticoRadiators/Alex/skillsDatabase.html">Skills</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <header class="jumbotron subhead"id="top">
+                <h1>Semantico Skills Database</h1>
+                <p class="lead">Search for specific skills or see the entire database <a href="">here</a></p> <!--This link (here) should display the whole table-->
+            </header>
+            <hr/>
+        </div>
+
+
+
+
+        <table id="chart">
+            <tr><td></td><th>Data header 1</th><th>Data header 2</th></tr>
+        </table>
+
+
+
+
+
+        <!--This is the container for the table with all the skills. This should be populated with the results of the JSON parser Javascript
+        <div class="skills">
+        </div>-->
+
+        <!--Let's try grabbing the directly from a CSV file and displaying it in an HTML table -->
+        <!--<div class="skillscsv">
+            <table datasrc='#skills'>
+
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Name</th>
+                        <th>Job Title</th>
+                        <th>Languages [Java]</th>
+                        <th>Languages [Perl]</th>
+                        <th>Languages [HTML]</th>
+                        <th>Languages [CSS]</th>
+                        <th>Languages [Javascript]</th>
+                        <th>Languages [SQL]</th>
+                        <th>Languages [Ruby]</th>
+                        <th>Languages [Python]</th>
+                        <th>Languages [XML]</th>
+                        <th>Languages [XLST]</th>
+                        <th>Languages [PHP]</th>
+                        <th>Technologies [Git]</th>
+                        <th>Technologies [Subversion]</th>
+                        <th>Technologies [Jenkins]</th>
+                        <th>Technologies [Solr]</th>
+                        <th>Technologies [Unix]</th>
+                        <th>Technologies [jQuery]</th>
+                        <th>Technologies [LESS]</th>
+                        <th>Technologies [YUI]</th>
+                        <th>Technologies [Cocoon]<table/th>
+                        <th>Technologies [Spring]</th>
+                        <th>Technologies [Maven]</th>
+                        <th>Projects [Dawson]</th>
+                        <th>Projects [SGK]</th>
+                        <th>Projects [Perl SIPP]</th>
+                        <th>Projects [Java SIPP]</th>
+                        <th>Projects [SAMS]</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td><span datafld="timestamp"></span></td>
+                        <td><span datafld="name"></span></td>
+                        <td><span datafld="job title"></span></td>
+                        <td><span datafld="languages [java]"></span></td>
+                        <td><span datafld="languages [perl]"></span><table/td>
+                        <td><span datafld="languages [html]"></span></td>
+                        <td><span datafld="languages [css]"></span></td>
+                        <td><span datafld="languages [javascript]"></span></td>
+                        <td><span datafld="languages [sql]"></span></td>
+                        <td><span datafld="languages [ruby]"></span></td>
+                        <td><span datafld="languages [python]"></span></td>
+                        <td><span datafld="languages [xml]"></span></td>
+                        <td><span datafld="languages [xlst]"></span></td>
+                        <td><span datafld="languages [php]"></span></td>
+                        <td><span datafld="technologies [git]"></span></td>
+                        <td><span datafld="technologies [subversion]"></span></td>
+                        <td><span datafld="technologies [jenkins]"></span></td>
+                        <td><span datafld="technologies [solr]"></span></td>
+                        <td><span datafld="technologies [unix]"></span></td>
+                        <td><span datafld="technologies [jquery]"></span></td>
+                        <td><span datafld="technologies [less]"></span></td>
+                        <td><span datafld="technologies [yui]"></span></td>
+                        <td><span datafld="technologies [cocoon]"></span></td>
+                        <td><span datafld="technologies [spring]"></span></td>
+                        <td><span datafld="technologies [maven]"></span></td>
+                        <td><span datafld="projects [dawson]"></span></td>
+                        <td><span datafld="projects [sgk]"></span></td>
+                        <td><span datafld="projects [perl sipp]"></span></td>
+                        <td><span datafld="projects [java sipp]"></span></td>
+                        <td><span datafld="projects [sams]"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <object ID=data classid="clsid:333C7BC4-460F-11D0-BC04-0080C7055A83">
+                <param nAme="DataURL" value="skills.csv">
+                <param nAme="UseHeader" value="true">
+            </object>
+        </div>-->
+
+        <!--jQuery and Bootstrap Javascipt-->
+        <script src="jquery.js"></script>
+        <script src="bootstrap-dropdown.js"></script>
+        <script>$('.dropdown-toggle').dropdown()</script>	
+        <script src="bootstrap-collapse.js"></script>	
+
+        <!--This is the Javascript for handling the parsing of the JSON objects-->
+        <!--One consideration, the data is being extracted from Googel Docs, for this to happen it will have to be public. Is this a good idea?-->
+        <script src="jsonParse.js"></script>	
+
+    </body>
+</html>
+
