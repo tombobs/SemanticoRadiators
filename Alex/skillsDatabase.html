@@ -44,12 +44,23 @@
             <hr/>
         </div>
 
+
+
+
+        <table id="chart">
+            <tr><td></td><th>Data header 1</th><th>Data header 2</th></tr>
+        </table>
+
+
+
+
+
         <!--This is the container for the table with all the skills. This should be populated with the results of the JSON parser Javascript
         <div class="skills">
         </div>-->
 
         <!--Let's try grabbing the directly from a CSV file and displaying it in an HTML table -->
-        <div class="skillscsv">
+        <!--<div class="skillscsv">
             <table datasrc='#skills'>
 
                 <thead>
@@ -127,18 +138,18 @@
                 <param nAme="DataURL" value="skills.csv">
                 <param nAme="UseHeader" value="true">
             </object>
-        </div>
+        </div>-->
 
-		<!--jQuery and Bootstrap Javascipt-->
-		<script src="jquery.js"></script>
-		<script src="bootstrap-dropdown.js"></script>
-		<script>$('.dropdown-toggle').dropdown()</script>	
-		<script src="bootstrap-collapse.js"></script>	
-		
-		<!--This is the Javascript for handling the parsing of the JSON objects-->
-		<!--One consideration, the data is being extracted from Googel Docs, for this to happen it will have to be public. Is this a good idea?-->
-		<script src="jsonParse.js"></script>	
-		
-	</body>
+        <!--jQuery and Bootstrap Javascipt-->
+        <script src="jquery.js"></script>
+        <script src="bootstrap-dropdown.js"></script>
+        <script>$('.dropdown-toggle').dropdown()</script>	
+        <script src="bootstrap-collapse.js"></script>	
+
+        <!--This is the Javascript for handling the parsing of the JSON objects-->
+        <!--One consideration, the data is being extracted from Googel Docs, for this to happen it will have to be public. Is this a good idea?-->
+        <script src="jsonParse.js"></script>	
+
+    </body>
 </html>
 
