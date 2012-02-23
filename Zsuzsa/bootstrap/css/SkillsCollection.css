@@ -202,14 +202,20 @@ td {
 	width: 60px;
 }
 
+.jnr, .snr, .ldr , .upd {
+	color: #889;
+	font-size: 14px;
+	margin-left: 20px;
+}
+
 .grad {
 	background-color: rgb(255,245,245);
-	background-image: -moz-linear-gradient(top, #fbfbfb, #9292a0);
-	background-image: -ms-linear-gradient(top, #fefffe, #a0f1a0);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fefffe), to(#a0f1a0));
-	background-image: -webkit-linear-gradient(top, #fefffe, #a0f1a0);
-	background-image: -o-linear-gradient(top, #fefffe, #a0f1a0);
-	background-image: linear-gradient(top, #fefffe, #a0f1a0);
+	background-image: -moz-linear-gradient(top, #fbfbff, #9898aa);
+	background-image: -ms-linear-gradient(top, #fbfbff, #9898aa);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbfbff), to(#9898aa));
+	background-image: -webkit-linear-gradient(top, #fbfbff, #9898aa);
+	background-image: -o-linear-gradient(top, #fbfbff, #9898aa);
+	background-image: linear-gradient(top, #fbfbff, #9898aa);
 	background-repeat: repeat-x;
 	-webkit-box-shadow: 0 2px 2px #339;
 	-moz-box-shadow: 0 1px 1px #339;
