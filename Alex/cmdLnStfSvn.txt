@@ -1,0 +1,8 @@
+//subversion commands to get info. The first outputs an xml file
+svn log -r '{2012-02-01}:HEAD' --xml https://svn.semantico.net/repos/main > file.xml
+svn log -r '{2012-02-01}:HEAD' https://svn.semantico.net/repos/main
+
+
+//Java code for running command line stuff
+Runtime.getRuntime().exec(myCommand);
+
