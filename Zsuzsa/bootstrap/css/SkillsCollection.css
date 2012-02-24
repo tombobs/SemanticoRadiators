@@ -217,7 +217,7 @@ td {
 	background-image: -o-linear-gradient(top, #fbfbff, #9898aa);
 	background-image: linear-gradient(top, #fbfbff, #9898aa);
 	background-repeat: repeat-x;
-	-webkit-box-shadow: 0 2px 2px #339;
+	-webkit-box-shadow: 0 1px 1px #339;
 	-moz-box-shadow: 0 1px 1px #339;
 	box-shadow: 0 1px 1px #339;
 	padding-left: 15px;

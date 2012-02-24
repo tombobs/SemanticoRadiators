@@ -1,0 +1,51 @@
+html, body { 
+	height: 100%;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#556), to(#202030)); 
+    background-image: -moz-linear-gradient(top, #556, #202030);
+	background-image: -ms-linear-gradient(top, #556, #202030);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#556), to(#202030));
+	background-image: -webkit-linear-gradient(top, #556, #202030);
+	background-image: -o-linear-gradient(top, #556, #202030);
+	background-image: linear-gradient(top, #556, #202030);
+	background-repeat: repeat-x;
+}
+
+h3.container { 
+	margin: 0 20px; 
+	width: auto;
+	color: #01b0e3;
+}
+  
+.progress {
+    height: 2px;
+    margin-bottom: 2px;
+	background-image: none;
+	background-color: rgba(0,0,0,0) ;
+}
+
+.progress .bar {
+    width: 100%;
+    height: 2px;
+    background-color: #ef6b00;
+    background-image: none;
+    -webkit-transition: width 60s linear;
+    -moz-transition: width 60s linear;
+    -ms-transition: width 60s linear;
+    -o-transition: width 60s linear;
+    transition: width 60s linear;
+}
+.progress .bar.hide {
+    width:0;
+    display: block;
+}
+  .progress .bar.notrans { 
+    -webkit-transition: none !important; 
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+} 
+.navbar-inner {
+	padding-left: 2px;
+	padding-right: 2px;
+}
