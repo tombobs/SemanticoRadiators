@@ -12,8 +12,7 @@ public class XMLParser {
 
 	private static List<CommitObject> commitObjects = new ArrayList<CommitObject>();
 
-	public XMLParser(String path) throws Exception{
-
+	public XMLParser(String path) throws Exception {
 		File file = new File(path);
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -30,22 +29,17 @@ public class XMLParser {
 		NodeList nList = doc.getElementsByTagName("logentry");
 
 		for (int temp = 0; temp < nList.getLength(); temp++) {
-
 			Node nNode = nList.item(temp);
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
 				Element eElement = (Element) nNode;
-
 				author = getTagValue("author", eElement);
 				date = getTagValue("date", eElement);
 				message = getTagValue("msg", eElement);
-				
 				//System.out.println("Author: " + getTagValue("author", eElement));
 				//System.out.println("Date : " + getTagValue("date", eElement));
 				//System.out.println("Message : " + getTagValue("msg", eElement));
 				//System.out.flush();	//forces it to print everything out
 			}
-			
 			makeCommitObject(author,date,message);
 		}
 	}
@@ -65,13 +59,11 @@ public class XMLParser {
 	}
 	
 	private static void makeCommitObject(String author, String date, String message) {
-
 		CommitObject newCommit = new CommitObject(author,date,message);
 		commitObjects.add(newCommit);
 	}
 	
 	public List<CommitObject> returnCommitObjects() {
-		
 		return commitObjects;
 	}
 }
