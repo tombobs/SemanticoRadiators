@@ -22,7 +22,7 @@ public class LogCreator {
 	public String getLogPath() {
 		
 		File directory = new File(".");
-		String path = directory.getAbsolutePath()+filename+".xml";
+		String path = directory.getAbsolutePath()+"/"+filename+".xml";
 		
 		return path;
 	}
