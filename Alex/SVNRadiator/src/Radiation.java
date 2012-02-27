@@ -1,4 +1,6 @@
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Radiation {
 	
@@ -6,6 +8,12 @@ public class Radiation {
 	static String date = "\'{2012-02-01}:HEAD\'";
 	static String xmlFileOutput = "testLog";
 	static String repoURL = "https://svn.semantico.net/repos/main";
+	
+//	static Timer timer;
+//	static int seconds = 10;
+	
+	static LogCreator log;
+//	static TimedLogging dothishit = new TimedLogging();
 	
 	//a list to store all of the objects
 	private static List<CommitObject> objects;
@@ -17,15 +25,42 @@ public class Radiation {
 		//}
 		
 		//create Log
-		LogCreator log =  new LogCreator(xmlFileOutput, date, repoURL);
+		log =  new LogCreator(xmlFileOutput, date, repoURL);
+		
+		
 		//get filename
-		String xmlFile = log.getLogPath();
-		//parse Log
-		XMLParser parser = new XMLParser(xmlFile);
+		//String xmlFile = log.getLogPath();
+	
+		makeLog();
+		
+		//printOutObjects();
+		
+		//fail
+		//timer.schedule(new TimerTask() { @Override public void run(makeLog())}, 1, 2);
+		
+//		timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                try {
+//					makeLog();
+//				} catch (Exception e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}                        
+//            }
+//        }, 1, 2);
+//		
+		
+		//timer.schedule(dothishit, 0, seconds * 1000);
+	}
+	
+	public static TimerTask makeLog() throws Exception {
+		log.getHistory();
+		XMLParser parser = new XMLParser(log.getLogPath());
 		//gets a list of objects from the parser
 		objects = parser.returnCommitObjects();
-		
 		printOutObjects();
+		return null;
 	}
 	
 	//a method for checking this works, that the objects have been created

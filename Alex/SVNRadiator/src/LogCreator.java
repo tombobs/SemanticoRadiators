@@ -12,7 +12,6 @@ public class LogCreator {
 		filename = xmlFileToMake;
 		String repo = url;
 		command = "svn log -r "+date+" "+repo+" > "+xmlFilename+".xml";
-		getHistory();
 	}
 	
 	public void getHistory() throws Exception {
