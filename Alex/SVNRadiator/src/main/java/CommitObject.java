@@ -2,16 +2,23 @@
 
 public class CommitObject {
 	
+	private String project;
 	private String author;
 	private String date;
 	private String message;
 
-	public CommitObject(String auth, String dat, String msg) {
+	public CommitObject(String path, String auth, String dat, String msg) {
+		
+		project = path;
 		author = auth;
 		date = dat;
 		message = msg;
 	}
 
+	public String getProject() {
+		return project;
+	}
+	
 	public String getAuthor() {
 		return author;
 	}
