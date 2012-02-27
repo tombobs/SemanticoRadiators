@@ -1,3 +1,5 @@
+//A class to represent a single commit and store its details 
+
 public class CommitObject {
 	
 	private String author;

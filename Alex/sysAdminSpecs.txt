@@ -1,0 +1,7 @@
+something that coordinates with the network, nagios api to connect with servers and stuff. can be run on each of the servers and expose the status of each of the workstations as Json and pull that out
+problem = 7 nagios stations - dev, test, live, bunker, here live, other customers
+status boards need to reflect the status of all of those
+
+they can do the setting up and then they just need a web interface from us
+
+ticket status summary for RT

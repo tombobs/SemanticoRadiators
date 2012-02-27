@@ -1,3 +1,5 @@
+//This class takes in an *.xml file, splits into individual commit objects and then returns a list of those objects
+
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
@@ -22,10 +24,7 @@ public class XMLParser {
 		String author = null;
 		String date = null;
 		String message = null;
-		
-		//System.out.println("Root element :"+ doc.getDocumentElement().getNodeName());
-		//System.out.println("-----------------------");
-		
+
 		NodeList nList = doc.getElementsByTagName("logentry");
 
 		for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -35,11 +34,8 @@ public class XMLParser {
 				author = getTagValue("author", eElement);
 				date = getTagValue("date", eElement);
 				message = getTagValue("msg", eElement);
-				//System.out.println("Author: " + getTagValue("author", eElement));
-				//System.out.println("Date : " + getTagValue("date", eElement));
-				//System.out.println("Message : " + getTagValue("msg", eElement));
-				//System.out.flush();	//forces it to print everything out
 			}
+			
 			makeCommitObject(author,date,message);
 		}
 	}
@@ -50,19 +46,21 @@ public class XMLParser {
 
 		Node nValue = (Node) nlList.item(0);
 		
-		//Had a problem with null values even though the message was there. This will return a null string if the message is null.
+		//Had a problem with null values even though the message tag was there. This will return a null string if the message is null.
 		if (nValue == null) {
 			return "";
 		}
-
+		
 		return nValue.getNodeValue();
 	}
 	
+	//Takes variables created above and makes a commit object from them
 	private static void makeCommitObject(String author, String date, String message) {
 		CommitObject newCommit = new CommitObject(author,date,message);
 		commitObjects.add(newCommit);
 	}
 	
+	//This returns the object list
 	public List<CommitObject> returnCommitObjects() {
 		return commitObjects;
 	}

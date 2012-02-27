@@ -27,7 +27,6 @@ public class Radiation {
 		//create Log
 		log =  new LogCreator(xmlFileOutput, date, repoURL);
 		
-		
 		//get filename
 		//String xmlFile = log.getLogPath();
 	
@@ -50,7 +49,6 @@ public class Radiation {
 //            }
 //        }, 1, 2);
 //		
-		
 		//timer.schedule(dothishit, 0, seconds * 1000);
 	}
 	
@@ -75,3 +73,8 @@ public class Radiation {
 		}
 	}
 }
+
+
+//Once the timing issue is sorted out, every time we make a log, is it good 
+//practice to delete the original log first? Or will creating a new log just 
+//overwrite it?
