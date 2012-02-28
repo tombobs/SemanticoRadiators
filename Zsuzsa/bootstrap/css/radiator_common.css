@@ -34,17 +34,20 @@ h3.container {
     -o-transition: width 60s linear;
     transition: width 60s linear;
 }
+
 .progress .bar.hide {
     width:0;
     display: block;
 }
-  .progress .bar.notrans { 
+
+.progress .bar.notrans { 
     -webkit-transition: none !important; 
     -moz-transition: none !important;
     -ms-transition: none !important;
     -o-transition: none !important;
     transition: none !important;
 } 
+
 .navbar-inner {
 	padding-left: 2px;
 	padding-right: 2px;
