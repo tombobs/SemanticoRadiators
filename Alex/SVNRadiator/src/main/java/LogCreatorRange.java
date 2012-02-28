@@ -2,17 +2,17 @@
 
 import java.io.File;
 
-public class LogCreator {
+public class LogCreatorRange {
 	
 	String command;
 	String filename;
 	
 	//This creates a string to be used for the command line command
-	public LogCreator(String xmlFileToMake, String date, String url) throws Exception {
+	public LogCreatorRange(String xmlFileToMake, String range, String url) throws Exception {
 		
 		filename = xmlFileToMake;
 		String repo = url;
-		command = String.format("svn log -r %s --xml -v %s > %s", date, repo, getLogPath());
+		command = String.format("svn log -r %s --xml -v %s > %s", range, repo, getLogPath());
 		System.out.println(command);
 	}
 	

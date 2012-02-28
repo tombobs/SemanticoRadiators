@@ -18,13 +18,13 @@ public class XMLParser {
 	private static List<CommitObject> commitObjects = new ArrayList<CommitObject>();
 
 	public XMLParser(String path) throws Exception {
-		
+
 		File file = new File(path);
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(file);
 		doc.getDocumentElement().normalize();
-		
+
 		String author = null;
 		String date = null;
 		String message = null;
@@ -35,52 +35,50 @@ public class XMLParser {
 
 		for (int temp = 0; temp < nList.getLength(); temp++) {
 			Node nNode = nList.item(temp);
-			
+
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-				
+
 				Element eElement = (Element) nNode;
 				author = getTagValue("author", eElement);
 				date = getTagValue("date", eElement);
 				message = getTagValue("msg", eElement);
 				NodeList paths = eElement.getElementsByTagName("paths");
-				
-				if(paths.getLength() > 0) {
-					
-					Element pathsEl = (Element)paths.item(0);
+
+				if (paths.getLength() > 0) {
+
+					Element pathsEl = (Element) paths.item(0);
 					projectPath = getTagValue("path", pathsEl);
 				}
-				
-				StringTokenizer splitter = new StringTokenizer(projectPath,  "/");
+
+				StringTokenizer splitter = new StringTokenizer(projectPath, "/");
 				projectName = splitter.nextToken();
-				
-				makeCommitObject(projectName,author,date,message);
+
+				CommitObject newCommit = new CommitObject(projectName, author,
+						date, message);
+				commitObjects.add(newCommit);
 			}
 		}
 	}
 
 	private static String getTagValue(String sTag, Element eElement) {
-		
+
 		NodeList nlList = eElement.getElementsByTagName(sTag).item(0)
 				.getChildNodes();
 
 		Node nValue = (Node) nlList.item(0);
-		
-		//Had a problem with null values even though the message tag was there. This will return a null string if the message is null.
+
+		// Had a problem with null values even though the message tag was there.
+		// This will return a null string if the message is null.
 		if (nValue == null) {
 			return "";
 		}
-		
+
 		return nValue.getNodeValue();
 	}
-	
-	//Takes variables created above and makes a commit object from them
-	private static void makeCommitObject(String project, String author, String date, String message) {
-		CommitObject newCommit = new CommitObject(project, author,date,message);
-		commitObjects.add(newCommit);
-	}
-	
-	//This returns the object list
+
+	// This returns the object list
 	public List<CommitObject> returnCommitObjects() {
+		
 		return commitObjects;
 	}
 }
