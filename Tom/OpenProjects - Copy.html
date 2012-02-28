@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="bootstrap/css/OpenProjects.css">
+		<link rel="stylesheet" href="bootstrap/css/radiator_common.css">
+		<script src="bootstrap/js/jquerylatest.js"></script>
+	</head>
+
+	<body>
+
+		<header class="navbar">
+			<div class="navbar-inner">
+				<div class="progress">
+					<div class="bar notrans"></div>
+				</div>
+				<div class="fill">
+				  <h3 class="container"><a href="https://jira.semantico.com/">JIRA</a> feed</h3>
+				</div>
+			</div>
+		</header>
+		<!--
+		<div class="row-fluid board">
+			<div class="span12"> 
+				<div class="row-fluid" >
+					<div class="span3 project r1"> Ticket Ref.
+					</div>
+					<div class="span6 people r1"> Summary
+					</div>
+					<div class="span2 date r1"> Last Updated
+					</div>	
+				</div>
+			</div>	
+		</div>
+		-->
+		<a href="/rt/Ticket/Display.html?id=__id__">__id__</a>/TITLE:#', '<a href="/rt/Ticket/Display.html?id=__id__">__Subject__</a>/TITLE:Subject', QueueName, ExtendedStatus, CreatedRelative, '<a href="/rt/Ticket/Display.html?Action=Take&amp;id=__id__">Take</a>/TITLE:&nbsp;
+		<#list JIRAstats as dispObj>
+		<div class="row-fluid board">
+			<div class="span12"> 
+				<div class="row-fluid" >
+					<div class="span3"> ${dispObj.title}
+					</div>
+					<div class="span6">  ${dispObj.summary}
+					</div>
+					<div class="span2"> ${dispObj.lastUpdate}
+					</div>	
+				</div>
+			</div>	
+		</div>
+
+	<script id="main">
+		window.OurJenkins = (function($) { 
+
+			var jobList, template, loop, builds, prog, sorted;
+
+		    drawHtmls = function() {
+				builds.html( );
+		    };
+			window.time = 60;
+			loop = {
+				time: 20, // in seconds
+
+				func: function() {	  					 
+					prog.addClass("notrans").removeClass("hide");
+					setTimeout(function() {
+						prog.removeClass("notrans").addClass("hide");
+					}, 100);
+					// Call yourself
+					setTimeout(arguments.callee, window.time * 1000);
+				 },
+
+				init: function() {
+					builds        = $('#builds');
+					prog          = $('.bar');
+					sorted        = $('body');
+					loop.func();
+				}
+			};
+
+			// Document Ready
+			$(function() {
+				loop.init();
+			});
+
+			// Public
+			return {
+				draw: drawHtmls,
+				count: 0
+			};
+
+		})(jQuery);
+	</script>		
+	</body>
+</html>
