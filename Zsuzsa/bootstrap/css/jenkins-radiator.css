@@ -1,0 +1,140 @@
+html, body { 
+	height:100%; 
+}
+  
+body { 
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#556), to(#202030)); 
+    background-image: -moz-linear-gradient(top, #556, #202030);
+	background-image: -ms-linear-gradient(top, #556, #202030);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#556), to(#202030));
+	background-image: -webkit-linear-gradient(top, #556, #202030);
+	background-image: -o-linear-gradient(top, #556, #202030);
+	background-image: linear-gradient(top, #556, #202030);
+	background-repeat: repeat-x;
+}
+  
+h3 { 
+	color: #3a4a5f; /*#404075*/
+	font-size: 22px; 
+}
+
+h3.container { 
+	margin: 0 20px; 
+	width: auto;
+}
+
+#wrapper { 
+	padding: 60px 10px 10px 10px; 
+} 
+
+#builds { /*width:50%;*/ 
+    -webkit-column-count: 3;  
+    -webkit-column-gap: 15px; 
+    -moz-column-count: 3;     
+	-moz-column-gap: 15px;  
+    column-count: 3;          
+	column-gap: 15px; 
+}
+
+#sorted, .timestamp { 
+	float:right; 
+	margin-top:9px; 
+}
+#sorted { 
+	color: #ef6b00; 
+	display: none; 
+}
+
+.alert { 
+    -webkit-column-break-inside: avoid; 
+	page-break-inside: avoid;
+	-ms-column-break-inside: avoid;
+	-o-column-break-inside: avoid;
+	display: block;
+}
+
+.alert-success, .alert-error, .alert-info {
+  	font-size: 16px;
+	text-shadow: none;
+}
+
+.alert-success {
+    background-color: #3fe368;
+    border: 1px solid #132;	
+}
+
+.alert-success, .alert-success .alert-heading {
+    color: #21504d;	
+}
+
+.alert-error {
+    background-color: #fe3636;
+    border-color: #532327;	
+}
+
+.alert-error, .alert-error .alert-heading {
+    color: #522;
+}
+
+.alert-info {
+    background-color: #b0ddf7;
+    border-color: #bce8f1;
+}
+
+.alert-info, .alert-info .alert-heading {
+    color: #305780;
+}
+
+.sorted .alert { 
+	display: block; 
+}
+
+dl { 
+	margin: 0; 
+}
+
+.fill { 
+	position: relative; 
+}
+ 
+.progress {
+    height: 2px;
+    margin-bottom: 2px;
+	background-image: none;
+	background-color: rgba(0,0,0,0) ;
+}
+
+.progress .bar {
+    width: 100%;
+    height: 2px;
+    background-color: #EF6B00;
+    background-image: none;
+    -webkit-transition: width 60s linear;
+    -moz-transition: width 60s linear;
+    -ms-transition: width 60s linear;
+    -o-transition: width 60s linear;
+    transition: width 60s linear;
+}
+
+.progress .bar.hide {
+    width: 0;
+    display: block;
+}
+
+.progress .bar.notrans { 
+    -webkit-transition: none !important; 
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+} 
+
+.success .culprit { 
+	display: none; 
+	color: #fff; 
+}
+
+.navbar-inner {
+	padding-left: 2px;
+	padding-right: 2px;
+}
