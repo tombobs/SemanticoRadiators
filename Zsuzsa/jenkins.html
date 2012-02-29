@@ -32,7 +32,7 @@
 
 			  window.time = 10;
 			  } else {
-			  window.time = 60;
+			  window.time = 30;
 			} */ 
 		%>
 		<div class="alert <%= classmap[ job.color.split("_")[0] ] %> <%=job.color.split("_")[1] == "anime" ? " info": ""%>" data-uri="<%= job.lastBuild.url %>">
@@ -171,10 +171,10 @@
 		    drawHtmls = function() {
 				builds.html( tmpl("message", window.OurJenkins) );
 		    };
-			window.time = 60;
+			// window.time = 30;
 			loop = {
 
-				time: 20, // in seconds
+			//	time: 20, // in seconds
 
 		func: function() {
 
@@ -191,7 +191,7 @@
 
 
 			  // Call yourself
-			  setTimeout(arguments.callee, window.time * 1000);
+			 // setTimeout(arguments.callee, window.time * 1000);
 		  },
 
 			init: function() {

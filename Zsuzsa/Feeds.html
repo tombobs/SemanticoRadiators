@@ -24,6 +24,7 @@
 		</center>
 		
 		<script src="bootstrap/js/jquery.zrssfeed.min.js" type="text/javascript"></script>
+
 		
 		<script id="rssfeed" type="text/javascript">
 			$(document).ready(function () {
@@ -35,7 +36,7 @@
 		
 		<script id="chg_img">
 			var	theImages = new Array("image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg", "image6.jpg");
-			function changeImage() {	
+			function changeImage() {
 				var whichImage = Math.floor(Math.random() * 10) % theImages.length;
 				$("#responsecontainer").attr("src", "bootstrap/img/" + theImages[whichImage]);
 			}
@@ -43,7 +44,7 @@
 			$(document).ready(function() {
 			   changeImage();
 			   var refreshId = setInterval(function() {
-				  changeImage()}, 30000);
+				  changeImage()}, 16000);
 			   //$.ajaxSetup({ cache: false });
 			});
 		</script>

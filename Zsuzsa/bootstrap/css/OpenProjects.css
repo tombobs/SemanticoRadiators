@@ -1,9 +1,6 @@
-body {
-	background-color: #223;
-}
-
 .board {
-	margin: 2px 30px 2px 0px;
+	width: 97%;
+	margin: 5px;
 	padding: 10px 10px 20px 10px;
 	border-collapse:separate;
 	/* 
@@ -27,14 +24,21 @@ body {
 	font-size: 24px;
 }
 
-.project, .people, .date {
+.project, .people, .date, .message {
 	margin: 0;
 	padding: 12px 12px 12px 20px;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 5px;
 	background-repeat: repeat-x;
-	border-top: 1px solid #000;
+	border: 1px solid #000;
+}
+
+.message {
+	padding-top: 8px;
+	height: 40px;
+	font-size: 22px;
+	line-height: 22px;
 }
 
 .r1 {

@@ -8,7 +8,7 @@
 	background-image: linear-gradient(top, #dfe5ef, #c8d0e0);
 	background-repeat: repeat-x;
 	padding: 20px;
-	border: 1px solid rgb(100,100,100);
+	border: 1px solid rgb(50,50,50);
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
 	border-radius: 20px;
@@ -16,8 +16,18 @@
 }
 .rssHeader {
 	font-weight: bold;
+	font-size: 24px;
+	margin: 20px 0px 16px 0px;
+}
+.rssRow div {
 	font-size: 16px;
+	color: #306070;
 	margin-bottom: 8px;
+}
+.rssRow p {
+	font-size: 18px;
+	color: #205060;
+	margin-bottom: 22px;
 }
 #responsecontainer {
 	border: 1px solid #444;
@@ -27,5 +37,6 @@
 	vertical-align: center;
 }
 h4 a {
+	font-size: 22px;
 	color: #205060;
 }

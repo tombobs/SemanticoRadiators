@@ -30,7 +30,7 @@
 	-moz-border-radius: 6px;
 	border-radius: 5px;
 	background-repeat: repeat-x;
-	border-top: 1px solid #000;
+	border: 1px solid #000;
 }
 
 .rj1 {
@@ -74,7 +74,7 @@
 }
 
 .rj5 {
-	background-color: rgb(10,100,100);
+	background-color: rgb(10,120,120);
 /*	background-image: -moz-linear-gradient(top, #cf4700, #e88501);
 	background-image: -ms-linear-gradient(top, #cf4700, #e88501);
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#cf4700), to(#e88501));

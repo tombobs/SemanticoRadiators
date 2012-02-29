@@ -25,29 +25,27 @@
 			</div>
 		</header>
 	
-		<div id="content">
-			<div id="jira" data-page="jira.html"> </div>
-			<div id="feed" data-page="Feeds.html"> </div>
-			<div id="jenkins" data-page="jenkins.html">	</div>
-			<div id="subversion" data-page="OpenProjects.html" > </div>				
+		<div id="content">			
+			<div id="jenkins" data-page="jenkins.html">	</div>	
+			<div id="feeds" data-page="Feeds.html"> </div>
+			<div id="subversion" data-page="OpenProjects.html" > </div>	
+				
+			<div id="jira" data-page="jira.html"> </div>				
 		</div>
 		
 		<script id="main">
 			window.OurJenkins = (function($) { 		
 
-				var jobList, template, loop, builds, prog, pages, count;
+				var loop_i, prog_i, pages, count;
 
-				drawHtmls = function() {
-					builds.html( );
-				};
-				window.time = 60; //60 --> 1 minute
-				loop = {
-					time: 20, // in seconds
+				window.time = 30; //60 --> 1 minute
+				loop_i = {
+					time: 30, // in seconds
 
 					func: function() {	  									
-						prog.addClass("notrans").removeClass("hide");
+						prog_i.addClass("notrans").removeClass("hide");
 						setTimeout(function() {
-							prog.removeClass("notrans").addClass("hide");
+							prog_i.removeClass("notrans").addClass("hide");
 						}, 100);
 						var page=$(pages[count]);
 						pages.hide();
@@ -62,20 +60,19 @@
 						setTimeout(arguments.callee, window.time * 1000);						
 					 },
 
-					init: function() {
-						builds  = $('#builds');
-						prog   	= $('.bar');
+					init: function() {						
+						prog_i 	= $('.bar');
 						sub		= $('#subversion');
-						feed	= $('#feed');
+						feed	= $('#feeds');
 						pages 	= $('#content > div'); //all div-s in the #content
 						count 	= 0;
-						loop.func();						
+						loop_i.func();						
 					}
 				};
 
 				// Document Ready
 				$(function() {
-					loop.init();					
+					loop_i.init();					
 				});
 
 			})(jQuery);
