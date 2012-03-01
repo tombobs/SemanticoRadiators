@@ -1,0 +1,264 @@
+body {
+	background-color: #223;
+}
+
+table {
+	margin: 2px 30px 30px 30px;
+	border-collapse:separate;
+	background-color: rgb(50,50,50);
+	background-image: -moz-linear-gradient(top, #556, #223);
+	background-image: -ms-linear-gradient(top, #556, #223);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#556), to(#223));
+	background-image: -webkit-linear-gradient(top, #556, #223);
+	background-image: -o-linear-gradient(top, #556, #223);
+	background-image: linear-gradient(top, #556, #223);
+	background-repeat: repeat-x;
+	//border: 1px solid #ddd;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 1px 2px #668;
+	-moz-box-shadow: 0 1px 2px #668;
+	box-shadow: 0 1px 2px #668;
+	border-spacing:3px;
+	color: white;
+}
+
+td {
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	text-align: center;	
+}
+
+/* .greenshadow {
+	-webkit-box-shadow: inset 0 1px 1px #cec;
+	-moz-box-shadow: inset 0 1px 1px #cec;
+	box-shadow: inset 0 1px 1px #cec;
+}
+
+.yellowshadow {
+	-webkit-box-shadow: inset 0 1px 1px #fed474;
+	-moz-box-shadow: inset 0 1px 1px #fed474;
+	box-shadow: inset 0 1px 1px #fed474;
+}
+
+.redshadow {
+	-webkit-box-shadow: inset 0 1px 1px #fac;
+	-moz-box-shadow: inset 0 1px 1px #fac;
+	box-shadow: inset 0 1px 1px #fac;
+} */
+
+.name1, .name2, .name3 {
+	text-align: left;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.name1 {
+	font-size: 17px;
+	font-size: 17px;
+}
+
+.name2 {
+	font-size: 15px;
+}
+
+.name3 {
+	font-size: 13px;
+}
+
+/* .skill5_jnr {
+	background-color: rgb(80,245,80);
+}
+
+.skill4_jnr {
+	background-color: rgb(245,255,245);
+	background-image: -moz-linear-gradient(top, #fcfdfc, #70f070);
+	background-image: -ms-linear-gradient(top, #fcfdfc, #70f070);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fcfdfc), to(#70f070));
+	background-image: -webkit-linear-gradient(top, #fcfdfc, #70f070);
+	background-image: -o-linear-gradient(top, #fcfdfc, #70f070);
+	background-image: linear-gradient(top, #fcfdfc, #70f070);
+	background-repeat: repeat-x; 
+}
+
+.skill3_jnr {
+	background-color: rgb(245,255,245);
+	background-image: -moz-linear-gradient(top, #fcfdfc, #70f070);
+	background-image: -ms-linear-gradient(top, #fcfdfc, #70f070);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fcfdfc), to(#70f070));
+	background-image: -webkit-linear-gradient(top, #fcfdfc, #70f070);
+	background-image: -o-linear-gradient(top, #fcfdfc, #70f070);
+	background-image: linear-gradient(top, #fcfdfc, #70f070);
+	background-repeat: repeat-x;
+}
+
+.skill2_jnr {
+	background-color: rgb(245,255,245);
+	background-image: -moz-linear-gradient(top, #fefffe, #a0f1a0);
+	background-image: -ms-linear-gradient(top, #fefffe, #a0f1a0);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fefffe), to(#a0f1a0));
+	background-image: -webkit-linear-gradient(top, #fefffe, #a0f1a0);
+	background-image: -o-linear-gradient(top, #fefffe, #a0f1a0);
+	background-image: linear-gradient(top, #fefffe, #a0f1a0);
+	background-repeat: repeat-x; 
+}
+
+.skill1_jnr {
+	background-color: rgb(219,255,208);
+}
+
+.skill5_snr {
+	background-color: rgb(29,153,245);
+}
+
+.skill4_snr {
+	background-color: rgb(210,230,255);
+	background-image: -moz-linear-gradient(top, #8fd8fb, #1d99f5);
+	background-image: -ms-linear-gradient(top, #8fd8fb, #1d99f5);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8fd8fb), to(#1d99f5));
+	background-image: -webkit-linear-gradient(top, #8fd8fb, #1d99f5);
+	background-image: -o-linear-gradient(top, #8fd8fb, #1d99f5);
+	background-image: linear-gradient(top, #8fd8fb, #1d99f5);
+	background-repeat: repeat-x; 
+}
+
+.skill3_snr {
+	background-color: rgb(210,230,255);
+	background-image: -moz-linear-gradient(top, #daf2fe, #2da9f1);
+	background-image: -ms-linear-gradient(top, #daf2fe, #2da9f1);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#daf2fe), to(#2da9f1));
+	background-image: -webkit-linear-gradient(top, #daf2fe, #2da9f1);
+	background-image: -o-linear-gradient(top, #daf2fe, #2da9f1);
+	background-image: linear-gradient(top, #daf2fe, #2da9f1);
+	background-repeat: repeat-x; 
+}
+
+.skill2_snr {
+	background-color: rgb(210,230,255);
+	background-image: -moz-linear-gradient(top, #daf2fe, #87d8ff);
+	background-image: -ms-linear-gradient(top, #daf2fe, #87d8ff);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#daf2fe), to(#87d8ff));
+	background-image: -webkit-linear-gradient(top, #daf2fe, #87d8ff);
+	background-image: -o-linear-gradient(top, #daf2fe, #87d8ff);
+	background-image: linear-gradient(top, #daf2fe, #87d8ff);
+	background-repeat: repeat-x; 
+}
+
+.skill1_snr {
+	background-color: rgb(210,240,255);
+}
+
+.skill5_ldr {
+	background-color: rgb(247,46,40);
+}
+
+.skill4_ldr {
+	background-color: rgb(255,245,245);
+	background-image: -moz-linear-gradient(top, #fd851d, #f72e28);
+	background-image: -ms-linear-gradient(top, #fd851d, #f72e28);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fd851d), to(#f72e28));
+	background-image: -webkit-linear-gradient(top, #fd851d, #f72e28);
+	background-image: -o-linear-gradient(top, #fd851d, #f72e28);
+	background-image: linear-gradient(top, #fd851d, #f72e28);
+	background-repeat: repeat-x; 
+}
+
+.skill3_ldr {
+	background-color: rgb(255,245,245);
+	background-image: -moz-linear-gradient(top, #feb959, #fd7513);
+	background-image: -ms-linear-gradient(top, #feb959, #fd7513);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#feb959), to(#fd7513));
+	background-image: -webkit-linear-gradient(top, #feb959, #fd7513);
+	background-image: -o-linear-gradient(top, #feb959, #fd7513);
+	background-image: linear-gradient(top, #feb959, #fd7513);
+	background-repeat: repeat-x; 
+}
+
+.skill2_ldr {
+	background-color: rgb(255,230,200);
+	background-image: -moz-linear-gradient(top, #fdf568, #ffa230);
+	background-image: -ms-linear-gradient(top, #fdf568, #ffa230);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdf568), to(#ffa230));
+	background-image: -webkit-linear-gradient(top, #fdf568, #ffa230);
+	background-image: -o-linear-gradient(top, #fdf568, #ffa230);
+	background-image: linear-gradient(top, #fdf568, #ffa230);
+	background-repeat: repeat-x;
+}
+
+.skill1_ldr {
+	background-color: #f5ffa5;
+}
+
+.skill1_jnr, .skill2_jnr, .skill3_jnr, .skill4_jnr, .skill5_jnr, 
+.skill1_snr, .skill2_snr, .skill3_snr, .skill4_snr, .skill5_snr, 
+.skill1_ldr, .skill2_ldr, .skill3_ldr, .skill4_ldr, .skill5_ldr {
+	padding-left: 15px;
+} */
+
+.jnr, .snr, .ldr {
+	width: 60px;
+}
+
+.jnr, .snr, .ldr , .upd {
+	color: #889;
+	font-size: 14px;
+	margin-left: 20px;
+}
+
+.grad {
+	background-color: rgb(255,245,245);
+	background-image: -moz-linear-gradient(top, #fbfbff, #9898aa);
+	background-image: -ms-linear-gradient(top, #fbfbff, #9898aa);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbfbff), to(#9898aa));
+	background-image: -webkit-linear-gradient(top, #fbfbff, #9898aa);
+	background-image: -o-linear-gradient(top, #fbfbff, #9898aa);
+	background-image: linear-gradient(top, #fbfbff, #9898aa);
+	background-repeat: repeat-x;
+	-webkit-box-shadow: 0 1px 1px #339;
+	-moz-box-shadow: 0 1px 1px #339;
+	box-shadow: 0 1px 1px #339;
+	padding-left: 15px;
+}
+
+[class*="span"] {
+	float: left;
+	margin-left: 0px;
+}
+
+.search-query {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	height: 20px;
+	padding: 2px 2px;
+	line-height: 1.6;
+	font-size: 13px;
+	margin-left: 7px;
+	color: rgb(30,30,70);
+	font-weight: bold;
+	background: white;
+	//border: 1px solid grey;
+}
+
+.form-search {
+	margin:30px 0px 2px 30px;
+}
+
+.well {
+	//width: 940px;
+	min-height: 20px;
+	padding: 5px;
+	margin-bottom: 5px;
+	background-color: #55556b;
+	border: 1px solid #eee;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+/* 	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px; */
+	-webkit-box-shadow: inset 0 1px 1px rgba(60, 60, 60, 0.05);
+	-moz-box-shadow: inset 0 1px 1px rgba(60, 60, 60, 0.05);
+	box-shadow: inset 0 1px 1px rgba(60, 60, 60, 0.05);
+}

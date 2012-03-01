@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<!--				
+		<header class="navbar">
+			<div class="navbar-inner">
+				<div class="progress">
+					<div class="bar notrans"></div>
+				</div>
+				<div class="fill">
+				  <h3 class="container">Feeds of <span style="color:#EF6B00">Semantico</span></h3>
+				</div>
+			</div>
+		</header>
+-->
+		<center>
+			<div class="row-fluid board_feed">
+				<div class="span5">					
+					<img id="responsecontainer"/>
+				</div>
+				<div class="span7"> 
+					<div id="feed_content"></div> 
+				</div>
+			</div>
+		</center>
+		
+		<script src="bootstrap/js/jquery.zrssfeed.min.js" type="text/javascript"></script>
+		
+		<script id="rssfeed" type="text/javascript">
+			$(document).ready(function () {
+				$('#feed_content').rssfeed('http://www.semantico.com/feed/', {
+						limit: 3
+				});
+			});
+		</script>	
+		
+		<script id="chg_img">
+			var	theImages = new Array("image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg", "image6.jpg");
+			function changeImage() {	
+				var whichImage = Math.floor(Math.random() * 10) % theImages.length;
+				$("#responsecontainer").attr("src", "bootstrap/img/" + theImages[whichImage]);
+			}
+
+			$(document).ready(function() {
+			   changeImage();
+			   var refreshId = setInterval(function() {
+				  changeImage()}, 30000);
+			   //$.ajaxSetup({ cache: false });
+			});
+		</script>

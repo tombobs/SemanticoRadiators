@@ -1,0 +1,31 @@
+.board_feed {
+	width: 94%;		
+	background-image: -moz-linear-gradient(top, #dfe5ef, #c8d0e0);
+	background-image: -ms-linear-gradient(top, #dfe5ef, #c8d0e0);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dfe5ef), to(#c8d0e0));
+	background-image: -webkit-linear-gradient(top, #dfe5ef, #c8d0e0);
+	background-image: -o-linear-gradient(top, #dfe5ef, #c8d0e0);
+	background-image: linear-gradient(top, #dfe5ef, #c8d0e0);
+	background-repeat: repeat-x;
+	padding: 20px;
+	border: 1px solid rgb(100,100,100);
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	text-align: left;
+}
+.rssHeader {
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom: 8px;
+}
+#responsecontainer {
+	border: 1px solid #444;
+}
+#feed {
+	height: 530px;
+	vertical-align: center;
+}
+h4 a {
+	color: #205060;
+}
