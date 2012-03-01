@@ -1,4 +1,4 @@
-html, body { 
+/*html, body { 
 	height:100%; 
 }
   
@@ -12,6 +12,7 @@ body {
 	background-image: linear-gradient(top, #556, #202030);
 	background-repeat: repeat-x;
 }
+*/
   
 h3 { 
 	color: #104050; /*#404075*/
@@ -28,7 +29,7 @@ h3 small {
 }
 
 #wrapper { 
-	padding: 60px 10px 10px 10px; 
+	padding: 10px; 
 } 
 
 #builds { /*width:50%;*/ 

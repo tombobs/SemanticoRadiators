@@ -14,11 +14,15 @@
 -->
 		<center>
 			<div class="row-fluid board_feed">
-				<div class="span5">					
-					<img id="responsecontainer"/>
+				<div class="span6">	
+					<div class="verticalCenter">				
+						<img id="responsecontainer" width="600" />
+					</div>	
 				</div>
-				<div class="span7"> 
-					<div id="feed_content"></div> 
+				<div class="span6"> 
+					<div class="verticalCenter">
+						<div id="feed_content"></div> 
+					</div>
 				</div>
 			</div>
 		</center>
@@ -29,7 +33,7 @@
 		<script id="rssfeed" type="text/javascript">
 			$(document).ready(function () {
 				$('#feed_content').rssfeed('http://www.semantico.com/feed/', {
-						limit: 3
+						limit: 4
 				});
 			});
 		</script>	

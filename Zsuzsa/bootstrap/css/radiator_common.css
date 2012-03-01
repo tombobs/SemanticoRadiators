@@ -1,4 +1,6 @@
 html, body { 
+	/*width: 100%;*/
+	width: 1280px;
 	height: 100%;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#55555f), to(#20202a)); 
     background-image: -moz-linear-gradient(top, #55555f, #20202a);
@@ -51,4 +53,8 @@ h3.container {
 .navbar-inner {
 	padding-left: 2px;
 	padding-right: 2px;
+}
+
+.row-fluid >[class*="span"] {
+  margin-left: 1.5%;
 }

@@ -1,6 +1,6 @@
 .board_jira {
 	width: 96%;
-	margin: 2px;
+	margin: 2px 2px 10px 2px;
 	padding: 10px;
 	border-collapse: separate;
 	background-color: rgb(50,50,50);
@@ -24,10 +24,15 @@
 	text-align: left;
 }
 
+.board_jira .span2 {
+	/*width: 12%;*/
+}
+
 .board_jira p {
 	padding-left: 0px;
 	color: white;
-	font-size: 26px;
+	font-size: 24px;
+	margin: 0px 0px 4px 0px;
 }
 
 .ticketID {
