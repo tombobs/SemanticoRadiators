@@ -1,0 +1,7 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.semantico</groupId>
+  <artifactId>infoRadiator</artifactId>
+  <version>1</version>
+  <packaging>war</packaging>
+</project>
