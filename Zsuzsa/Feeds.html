@@ -14,10 +14,10 @@
 -->
 		<center>
 			<div class="row-fluid board_feed">
-				<div class="span6">	
-					<div class="verticalCenter">				
+				<div class="span6">
+					<div class="verticalCenter pic">
 						<img id="responsecontainer" width="600" />
-					</div>	
+					</div>
 				</div>
 				<div class="span6"> 
 					<div class="verticalCenter">
@@ -38,6 +38,14 @@
 			});
 		</script>	
 		
+		
+		<!-- 
+		
+			This randomly chooses one image from a local directory and changes them in a given interval. 
+			Another solution is to get the images from a given FlickR gallery, but it is always starting with the first image.
+			This solution can be found in flickr_pics.html
+		
+		-->
 		<script id="chg_img">
 			var	theImages = new Array("image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg", "image6.jpg");
 			function changeImage() {

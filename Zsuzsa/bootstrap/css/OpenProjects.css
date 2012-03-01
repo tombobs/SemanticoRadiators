@@ -22,7 +22,7 @@
 	border-spacing:3px;
 	/*color: white; color: #111;*/
 	color: #431000;	
-	font-size: 24px;
+	/*font-family: Droid Sans Mono;*/
 }
 
 .board_svn .span1 {
@@ -41,12 +41,12 @@
 	border-radius: 5px;
 	background-repeat: repeat-x;
 	border: 1px solid #000;
+	font-size: 22px; 
 }
 
 .message {
 	padding-top: 8px;
 	height: 40px;
-	font-size: 22px;
 	line-height: 22px;
 }
 
