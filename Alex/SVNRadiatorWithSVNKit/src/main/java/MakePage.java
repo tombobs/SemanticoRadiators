@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -22,19 +24,21 @@ public class MakePage {
 	
 	Collection<SVNLogEntry> logEntries;
 	
-	String[] author = new String[10];
-	String[] message = new String[10];
+	String[] author = new String[8];
+	String[] message = new String[8];
 	
+	String[] dateString = new String[8];
 	Date date;
-	String[] dateString = new String[10];
+	String time;
 	
-	Map<String, SVNLogEntryPath> paths;
+	String[] projectName = new String[8];
 	String pathsString;
-	String[] projectName = new String[10];
+	Map paths; //Just need to check that what I have done below is also valid and that I can avoid a a warning here by doing the toString() method in one movement 
+	String paths2;
 	
 	//for the model
 	Map<String, Map<String, String>> root;
-	//for the page
+	//for the page				
 	Template page;
 
 	public MakePage(Collection<SVNLogEntry> log) throws IOException {
@@ -70,19 +74,45 @@ public class MakePage {
 			
 			//These two are strings, no extra formatting needed
 			author[i] = entry.getAuthor();
-			message[i] = entry.getMessage();		
+			message[i] = entry.getMessage();	//So simple that this doesn't really require moving into its own method
+			
+			
 			//This one returns a date - make it into a string
 			date = entry.getDate();
-			dateString[i] = date.toString();
+			//dateString[i] = date.toString();
+			//time = createTime(date);	//should try to move all this to date method below
+			dateString[i] = createTime(date);			
+			
 			//Returns a Map object
 			paths = entry.getChangedPaths();
+			paths2 = entry.getChangedPaths().toString();
 			//Convert it to a string
 			pathsString = paths.toString();
 			//Parses the string to get project name using defined method below
-			projectName[i] = getProjectName(pathsString);
+			projectName[i] = createProjectName(pathsString);
 
 			i++;
 		}
+	}
+	
+	//or - should this take a date object directly, use the date methods and then return a string? This certainyl makes sense in terms of splitting up functionality in own methods.
+	private String createTime(Date theDate) {
+		String theTime, newTime;
+		theTime  = DateFormat.getTimeInstance().format(theDate).toString();
+		StringBuilder sb = new StringBuilder(theTime);
+		newTime = sb.delete((sb.length()-3), sb.length()).toString();
+		return newTime; 
+		
+	}
+
+	//This takes a large string relating to the path of the object and takes the first name, resulting in a project name
+	public String createProjectName(String chPaths) {
+		
+		Scanner pscan = new Scanner(chPaths).useDelimiter("/");
+		@SuppressWarnings("unused") //This is only here because I know 'slash' is an unused variable. As far as I could see the next() method does not take an integer as an argument so i was not sure how to skip the first character otherwise
+		String slash = pscan.next();
+		String pName = pscan.next();
+		return pName;
 	}
 	
 	//Builds to freemarker model with the corresponding entry object data
@@ -92,7 +122,7 @@ public class MakePage {
 		root = new HashMap<String, Map<String, String>>();
 	
 		//loops through and makes 10 revision maps for the model, each with their own identifier
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < 8; i++) {
 			
 			String revisionName = "rev"+(i+1);
 			//map for revision
@@ -117,12 +147,4 @@ public class MakePage {
 		out.flush();
 	}
 
-	//This takes a large string relating to the path of the object and takes the first name, resulting in a project name
-	public String getProjectName(String chPaths) {
-		
-		Scanner scan = new Scanner(chPaths).useDelimiter("/");
-		String slash = scan.next();
-		String pName = scan.next();
-		return pName;
-	}
 }

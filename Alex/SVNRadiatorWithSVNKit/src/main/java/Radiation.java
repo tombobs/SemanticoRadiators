@@ -18,7 +18,7 @@ public class Radiation {
 
 	static SVNRepository repository = null;
 	static String url = "https://svn.semantico.net/repos/main";
-	//Anonymous login for now - should be fine to work over Semantico network?.
+	//Anonymous login for now - should be fine to work over Semantico network?. Haven't tested over VPN
 	static String username = "anonymous";
 	static String password = "anonymous";
 	
@@ -33,8 +33,8 @@ public class Radiation {
 		
 		//Returns the latest revision number for the repository.
 		latestRev = repository.getLatestRevision();
-		//Calculates the number of the 10th one ago.
-		tenRevs = latestRev - 9;
+		//Calculates the number of the 8th one ago. This is 7 because the number of revisions to display is inclusive of the latest one
+		tenRevs = latestRev - 7;
 		
 		makeEntries();
 		updatePage();
@@ -63,7 +63,6 @@ public class Radiation {
 	//Calls the MakePage class to sort out the radiator page.
 	public static void updatePage() throws IOException, TemplateException {
 		
-		@SuppressWarnings("unused")
 		MakePage model = new MakePage(log);
 		model.fillPage();
 	}
