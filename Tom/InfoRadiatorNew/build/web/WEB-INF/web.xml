@@ -35,32 +35,24 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
-        <servlet-name>FreemarkerServlet</servlet-name>
-        <servlet-class>FreemarkerServlet</servlet-class>
+        <servlet-name>JIRAServlet</servlet-name>
+        <servlet-class>tom.control.JIRAServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ReadRssServlet</servlet-name>
-        <servlet-class>tom.control.ReadRssServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Rss2Servlet</servlet-name>
-        <servlet-class>Rss2Servlet</servlet-class>
+        <servlet-name>RTServlet</servlet-name>
+        <servlet-class>tom.control.RTServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ReadRssServlet</servlet-name>
         <url-pattern>/jiraServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>FreemarkerServlet</servlet-name>
-        <url-pattern>/test</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>freemarker</servlet-name>
         <url-pattern>*.ftl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Rss2Servlet</servlet-name>
-        <url-pattern>/Rss2</url-pattern>
+        <servlet-name>RTServlet</servlet-name>
+        <url-pattern>/RTServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -10,7 +10,7 @@ package tom.model;
  */
 public class DisplayObject {
     // VARIABLES
-    public String title,summary,lastUpdate;
+    private String title,summary,lastUpdate;
    
     // CONSTRUCTORS
     public DisplayObject(){}
@@ -21,9 +21,7 @@ public class DisplayObject {
     }
     
     // GETTERS & SETTERS
-    public void setLastUpdate(String lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
+    
     public void setSummary(String summary) {
         this.summary = summary;
     }

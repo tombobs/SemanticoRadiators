@@ -1,12 +1,14 @@
 html, body { 
+	/*width: 100%;*/
+	width: 1280px;
 	height: 100%;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#556), to(#202030)); 
-    background-image: -moz-linear-gradient(top, #556, #202030);
-	background-image: -ms-linear-gradient(top, #556, #202030);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#556), to(#202030));
-	background-image: -webkit-linear-gradient(top, #556, #202030);
-	background-image: -o-linear-gradient(top, #556, #202030);
-	background-image: linear-gradient(top, #556, #202030);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#55555f), to(#20202a)); 
+    background-image: -moz-linear-gradient(top, #55555f, #20202a);
+	background-image: -ms-linear-gradient(top, #55555f, #20202a);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#55555f), to(#20202a));
+	background-image: -webkit-linear-gradient(top, #55555f, #20202a);
+	background-image: -o-linear-gradient(top, #55555f, #20202a);
+	background-image: linear-gradient(top, #55555f, #20202a);
 	background-repeat: repeat-x;
 }
 
@@ -28,11 +30,11 @@ h3.container {
     height: 2px;
     background-color: #ef6b00;
     background-image: none;
-    -webkit-transition: width 60s linear;
-    -moz-transition: width 60s linear;
-    -ms-transition: width 60s linear;
-    -o-transition: width 60s linear;
-    transition: width 60s linear;
+    -webkit-transition: width 30s linear;
+    -moz-transition: width 30s linear;
+    -ms-transition: width 30s linear;
+    -o-transition: width 30s linear;
+    transition: width 30s linear;
 }
 
 .progress .bar.hide {
@@ -51,4 +53,8 @@ h3.container {
 .navbar-inner {
 	padding-left: 2px;
 	padding-right: 2px;
+}
+
+.row-fluid >[class*="span"] {
+  margin-left: 1.5%;
 }

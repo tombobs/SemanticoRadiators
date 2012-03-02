@@ -7,7 +7,17 @@
 	</head>
 
 	<body>
+<<<<<<< HEAD
 
+<header class="navbar">
+	<div class="fill">
+                  <h1 class="container"><a href="https://jira.semantico.com/">JIRA</a> feed</h3>
+	</div>
+</header>
+
+<div class="row-fluid board_jira">
+=======
+<!--
 		<header class="navbar">
 			<div class="navbar-inner">
 				<div class="progress">
@@ -18,7 +28,7 @@
 				</div>
 			</div>
 		</header>
-<!--
+
                 <div class="row-fluid board">
 			<div class="span12"> 
 				<div class="row-fluid r1">
@@ -47,91 +57,152 @@
 		</div>
                 </#list>
 -->
-<div class="row-fluid board_jira">
+
+
+<center>
+		<div class="row-fluid board_jira">
+>>>>>>> 6b9c863c5c591657a6a83d32739b25bfcfec31dc
 			<div class="span12"> 
-				<div class="row-fluid" >
-					<div class="span2 ticketID rj1"> ${JIRAstats[0].title}
+				<p>JIRA</p>
+				<div class="row-fluid">
+					<div class="span2"> 
+						<div class="ticketID rj1">${JIRAstats[0].title}</div>
 					</div>
-					<div class="span7 people rj1"> ${JIRAstats[0].summary}
+					<div class="span7"> 
+						<div class="people rj1">${JIRAstats[0].summary}</div>
 					</div>
-					<div class="span2 date rj1"> ${JIRAstats[0].lastUpdate}
+					<div class="span3"> 
+						<div class="date rj1">JIRAstats[0].lastUpdate</div>
 					</div>	
 				</div>
-				<div class="row-fluid" >
-					<div class="span2 ticketID rj2"> ${JIRAstats[1].title}
+				<div class="row-fluid">
+					<div class="span2"> 
+						<div class="ticketID rj2">${JIRAstats[1].title}</div>
 					</div>
-					<div class="span8 people rj2"> ${JIRAstats[1].summary}
+<<<<<<< HEAD
+					<div class="span7 people rj2"> ${JIRAstats[1].summary}
+=======
+					<div class="span7"> 
+						<div class="people rj2">${JIRAstats[1].summary}</div>
+>>>>>>> 6b9c863c5c591657a6a83d32739b25bfcfec31dc
 					</div>
-					<div class="span2 date rj2"> ${JIRAstats[1].lastUpdate}
+					<div class="span3"> 
+						<div class="date rj2">JIRAstats[1].lastUpdate</div>
+					</div>		
+				</div>
+				<div class="row-fluid">
+					<div class="span2"> 
+						<div class="ticketID rj3">${JIRAstats[2].title}</div>
+					</div>
+<<<<<<< HEAD
+					<div class="span7 people rj3"> ${JIRAstats[2].summary}
+=======
+					<div class="span7"> 
+						<div class="people rj3">${JIRAstats[2].summary}</div>
+>>>>>>> 6b9c863c5c591657a6a83d32739b25bfcfec31dc
+					</div>
+					<div class="span3"> 
+						<div class="date rj3">JIRAstats[2].lastUpdate</div>
+					</div>		
+				</div>
+				<div class="row-fluid">
+					<div class="span2"> 
+						<div class="ticketID rj4">${JIRAstats[3].title}</div>
+					</div>
+					<div class="span7"> 
+						<div class="people rj4">${JIRAstats[3].summary}</div>
+					</div>
+					<div class="span3"> 
+						<div class="date rj4">JIRAstats[3].lastUpdate</div>
 					</div>	
 				</div>
-				<div class="row-fluid" >
-					<div class="span2 ticketID rj3"> ${JIRAstats[2].title}
+				<div class="row-fluid">
+					<div class="span2"> 
+						<div class="ticketID rj5">${JIRAstats[4].title}</div>
 					</div>
-					<div class="span8 people rj3"> ${JIRAstats[2].summary}
+					<div class="span7"> 
+						<div class="people rj5">${JIRAstats[4].summary}</div>
 					</div>
-					<div class="span2 date rj3"> ${JIRAstats[2].lastUpdate}
+<<<<<<< HEAD
+					<div class="span7 people rj4"> ${JIRAstats[3].summary}
+=======
+					<div class="span3"> 
+						<div class="date rj5">JIRAstats[4].lastUpdate</div>
+					</div>		
+				</div>
+			</div>	
+		</div>
+		
+		<div class="row-fluid board_jira">
+			<div class="span12"> 
+				<p>RT</p>
+				<div class="row-fluid">
+					<div class="span2"> 
+						<div class="ticketID rj1">XXX-12345</div>
+>>>>>>> 6b9c863c5c591657a6a83d32739b25bfcfec31dc
+					</div>
+					<div class="span7"> 
+						<div class="people rj1">People on the Project</div>
+					</div>
+					<div class="span3"> 
+						<div class="date rj1">12 May</div>
+					</div>		
+				</div>
+				<div class="row-fluid">
+					<div class="span2"> 
+						<div class="ticketID rj2">XXX-12345</div>
+					</div>
+					<div class="span7"> 
+						<div class="people rj2">People on the Project</div>
+					</div>
+					<div class="span3"> 
+						<div class="date rj2">12 May</div>
+					</div>		
+				</div>
+				<div class="row-fluid">
+					<div class="span2"> 
+						<div class="ticketID rj3">XXX-12345</div>
+					</div>
+					<div class="span7"> 
+						<div class="people rj3">People on the Project</div>
+					</div>
+					<div class="span3"> 
+						<div class="date rj3">12 May</div>
+					</div>		
+				</div>
+				<div class="row-fluid">
+					<div class="span2"> 
+						<div class="ticketID rj4">XXX-12345</div>
+					</div>
+					<div class="span7"> 
+						<div class="people rj4">People on the Project</div>
+					</div>
+					<div class="span3"> 
+						<div class="date rj4">12 May</div>
 					</div>	
 				</div>
-				<div class="row-fluid" >
-					<div class="span2 ticketID rj4"> ${JIRAstats[3].title}
+				<div class="row-fluid">
+					<div class="span2"> 
+						<div class="ticketID rj5">XXX-12345</div>
 					</div>
-					<div class="span8 people rj4"> ${JIRAstats[3].summary}
+<<<<<<< HEAD
+					<div class="span7 people rj5"> ${JIRAstats[4].summary}
+=======
+					<div class="span7"> 
+						<div class="people rj5">People on the Project</div>
+>>>>>>> 6b9c863c5c591657a6a83d32739b25bfcfec31dc
 					</div>
-					<div class="span2 date rj4"> ${JIRAstats[3].lastUpdate}
-					</div>	
-				</div>
-				<div class="row-fluid" >
-					<div class="span2 ticketID rj5"> ${JIRAstats[4].title}
-					</div>
-					<div class="span8 people rj5"> ${JIRAstats[4].summary}
-					</div>
-					<div class="span2 date rj5"> ${JIRAstats[4].lastUpdate}
+					<div class="span3"> 
+						<div class="date rj5">12 May</div>
 					</div>	
 				</div>
 			</div>	
 		</div>
-	<script id="main">
-		window.OurJenkins = (function($) { 
+<<<<<<< HEAD
+=======
+	</center>
 
-			var jobList, template, loop, builds, prog, sorted;
-
-		    drawHtmls = function() {
-				builds.html( );
-		    };
-			window.time = 60;
-			loop = {
-				time: 20, // in seconds
-
-				func: function() {	  					 
-					prog.addClass("notrans").removeClass("hide");
-					setTimeout(function() {
-						prog.removeClass("notrans").addClass("hide");
-					}, 100);
-					// Call yourself
-					setTimeout(arguments.callee, window.time * 1000);
-				 },
-
-				init: function() {
-					builds        = $('#builds');
-					prog          = $('.bar');
-					sorted        = $('body');
-					loop.func();
-				}
-			};
-
-			// Document Ready
-			$(function() {
-				loop.init();
-			});
-
-			// Public
-			return {
-				draw: drawHtmls,
-				count: 0
-			};
-
-		})(jQuery);
-	</script>		
+	
+>>>>>>> 6b9c863c5c591657a6a83d32739b25bfcfec31dc
 	</body>
 </html>

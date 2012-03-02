@@ -1,7 +1,9 @@
 <!doctype html>
 <html>
 	<head>
+
 		<meta charset="utf-8">
+
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="bootstrap/css/radiator_common.css">
@@ -10,6 +12,7 @@
 		<link rel="stylesheet" href="bootstrap/css/feeds.css">
 		<link rel="stylesheet" href="bootstrap/css/jira.css">
 		<script src="http://code.jquery.com/jquery-latest.js"></script>		
+
 	</head>
 
 	<body>
@@ -27,10 +30,10 @@
 	
 		<div id="content">
 			<div id="jira" data-page="jiraServlet"> </div>
-	<!--		<div id="feed" data-page="Feeds.html"> </div>
+			<div id="feed" data-page="Feeds.html"> </div>
 			<div id="jenkins" data-page="jenkins.html">	</div>
 			<div id="subversion" data-page="OpenProjects.html" > </div>				
-        -->
+        
 		</div>
 		
 		<script id="main">
@@ -41,7 +44,7 @@
 				drawHtmls = function() {
 					builds.html( );
 				};
-				window.time = 60; //60 --> 1 minute
+				window.time = 30; //60 --> 1 minute
 				loop = {
 					time: 20, // in seconds
 

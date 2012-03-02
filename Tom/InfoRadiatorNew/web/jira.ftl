@@ -12,7 +12,7 @@
 						<div class="people rj1">${JIRAstats[0].summary}</div>
 					</div>
 					<div class="span3"> 
-						<div class="date rj1">${JIRAstats[0].lastUpdate}</div>
+						<div class="date rj1">JIRAstats[0].lastUpdate</div>
 					</div>	
 				</div>
 				<div class="row-fluid">
@@ -23,7 +23,7 @@
 						<div class="people rj2">${JIRAstats[1].summary}</div>
 					</div>
 					<div class="span3"> 
-						<div class="date rj2">${JIRAstats[1].lastUpdate}</div>
+						<div class="date rj2">JIRAstats[1].lastUpdate</div>
 					</div>		
 				</div>
 				<div class="row-fluid">
@@ -34,7 +34,7 @@
 						<div class="people rj3">${JIRAstats[2].summary}</div>
 					</div>
 					<div class="span3"> 
-						<div class="date rj3">${JIRAstats[2].lastUpdate}</div>
+						<div class="date rj3">JIRAstats[2].lastUpdate</div>
 					</div>		
 				</div>
 				<div class="row-fluid">
@@ -45,7 +45,7 @@
 						<div class="people rj4">${JIRAstats[3].summary}</div>
 					</div>
 					<div class="span3"> 
-						<div class="date rj4">${JIRAstats[3].lastUpdate}</div>
+						<div class="date rj4">JIRAstats[3].lastUpdate</div>
 					</div>	
 				</div>
 				<div class="row-fluid">
@@ -56,7 +56,7 @@
 						<div class="people rj5">${JIRAstats[4].summary}</div>
 					</div>
 					<div class="span3"> 
-						<div class="date rj5">${JIRAstats[4].lastUpdate}</div>
+						<div class="date rj5">JIRAstats[4].lastUpdate</div>
 					</div>		
 				</div>
 			</div>	
