@@ -15,8 +15,16 @@ body {
 */
   
 h3 { 
-	color: #104050; /*#404075*/
 	font-size: 22px; 
+	color: #404075;
+}
+
+.alert-error h3 { 
+	color: #6f021f;
+}
+
+.alert-success h3 { 
+	color: #16635f;
 }
 
 h3.container { 
@@ -67,7 +75,8 @@ h3 small {
 }
 
 .alert-success {
-    background-color: #3fe368;
+    /*background-color: #3fe368;*/
+	background-color: #22ee66;
     border: 1px solid #132;	
 }
 
@@ -81,7 +90,7 @@ h3 small {
 }
 
 .alert-error, .alert-error .alert-heading {
-    color: #400;
+    color: #5f0210;
 }
 
 .alert-info {
