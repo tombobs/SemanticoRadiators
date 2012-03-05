@@ -15,7 +15,8 @@ html, body {
 h3.container { 
 	margin: 0 20px; 
 	width: auto;
-	color: #01b0e3;
+	/*color: #01b0e3; #FFCC66;*/
+	color: #FAE6B0;
 }
   
 .progress {

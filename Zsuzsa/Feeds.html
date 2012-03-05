@@ -1,22 +1,10 @@
 <!DOCTYPE html>
 
-<!--				
-		<header class="navbar">
-			<div class="navbar-inner">
-				<div class="progress">
-					<div class="bar notrans"></div>
-				</div>
-				<div class="fill">
-				  <h3 class="container">Feeds of <span style="color:#EF6B00">Semantico</span></h3>
-				</div>
-			</div>
-		</header>
--->
 		<center>
 			<div class="row-fluid board_feed">
 				<div class="span6">
 					<div class="verticalCenter pic">
-						<img id="responsecontainer" width="600" />
+						<img id="responsecontainer" />
 					</div>
 				</div>
 				<div class="span6"> 
@@ -41,8 +29,9 @@
 		
 		<!-- 
 		
-			This randomly chooses one image from a local directory and changes them in a given interval. 
-			Another solution is to get the images from a given FlickR gallery, but it is always starting with the first image.
+			This randomly chooses one image from a local directory and changes it in a given interval. 
+			
+			Another solution is to get the images from a certain FlickR gallery, but it is always starting with the first image.
 			This solution can be found in flickr_pics.html
 		
 		-->
@@ -51,12 +40,16 @@
 			function changeImage() {
 				var whichImage = Math.floor(Math.random() * 10) % theImages.length;
 				$("#responsecontainer").attr("src", "bootstrap/img/" + theImages[whichImage]);
-			}
+			}			
 
-			$(document).ready(function() {
-			   changeImage();
-			   var refreshId = setInterval(function() {
-				  changeImage()}, 16000);
-			   //$.ajaxSetup({ cache: false });
-			});
+			$(document).ready(
+				function() {
+					changeImage();					
+					var refreshId = self.setTimeout(
+						function() {
+							changeImage();
+						}, 16000
+					);
+				}
+			);
 		</script>

@@ -20,7 +20,14 @@
 					<div class="bar notrans"></div>
 				</div>
 				<div class="fill">
-				  <h3 class="container"> <span style="color:#EF6B00">Semantico</span></h3>
+				  <h3 class="container"> <span style="color:#EF6B00">Semantico - </span>  
+					<span id="headers"> 
+						<!-- The order of the #headers has to be the same as the order of the #content-->
+						<span id="header-jenkins"> SIPP<span style="color:#EF6B00">2</span> Jenkins<p id="sorted">Sorted: &#10004;</p> </span>
+						<span id="header-feeds"> Feeds </span>
+						<span id="header-jira"> JIRA & RT tickets </span>
+						<span id="header-subversion"> SVN commits </span>
+					</span> </h3>
 				</div>
 			</div>
 		</header>
@@ -28,16 +35,16 @@
 		<div id="content">					
 			<div id="jenkins" data-page="jenkins.html">	</div>	
 			<div id="feeds" data-page="Feeds.html"> </div>
-			<div id="jira" data-page="jira.html"> </div>
-			<div id="subversion" data-page="OpenProjects.html" > </div>		
+			<div id="jira" data-page="jira.html"> </div> 
+			<div id="subversion" data-page="OpenProjects4.html" > </div>		
 		</div>
 		
 		<script id="main">
 			window.OurJenkins = (function($) { 		
 
-				var loop_i, prog_i, pages, count;
+				var loop_i, prog_i, headers, pages, count;
 
-				window.time = 30; //60 --> 1 minute
+				window.time = 30; //60 -> 1 minute
 				loop_i = {
 					time: 30, // in seconds
 
@@ -46,10 +53,13 @@
 						setTimeout(function() {
 							prog_i.removeClass("notrans").addClass("hide");
 						}, 100);
-						var page=$(pages[count]);
+						var page = $(pages[count]);
 						pages.hide();
 						page.load(page.data("page"));
 						page.show();
+						var header = $(headers[count]);
+						headers.hide();
+						header.show();
 						if (count >= pages.length-1) {
 							count=0;
 						}		
@@ -61,8 +71,7 @@
 
 					init: function() {						
 						prog_i 	= $('.bar');
-						sub		= $('#subversion');
-						feed	= $('#feeds');
+						headers	= $('#headers > span');
 						pages 	= $('#content > div'); //all div-s in the #content
 						count 	= 0;
 						loop_i.func();						
@@ -76,7 +85,6 @@
 
 			})(jQuery);
 		</script>
-
 		
 	</body>
 </html>
