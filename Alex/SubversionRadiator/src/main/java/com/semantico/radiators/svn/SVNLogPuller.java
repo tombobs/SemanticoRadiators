@@ -16,7 +16,7 @@ public class SVNLogPuller {
 
 	static SVNRepository repository = null;
 	static String url = "https://svn.semantico.net/repos/main";
-	//Anonymous login for now - should be fine to work over Semantico network?. Haven't tested over VPN
+	//Anonymous login for now - should be fine to work over Semantico network.
 	static String username = "anonymous";
 	static String password = "anonymous";
 	
@@ -29,7 +29,7 @@ public class SVNLogPuller {
 		initialSetup();
 		//Returns the latest revision number for the repository.
 		latestRev = repository.getLatestRevision();
-		//Calculates the number of the 8th one ago. This is 7 because the number of revisions to display is inclusive of the latest one
+		//Calculates the number of the 8th previously generated revision.
 		tenRevs = latestRev - 7;
 		makeEntries();
 		updatePage();
@@ -55,7 +55,8 @@ public class SVNLogPuller {
 	
 	//Calls the MakePage class to sort out the radiator page.
 	public static void updatePage() throws IOException, TemplateException {
-		PageMaker model = new PageMaker(log);
+		RevisionMaker model = new RevisionMaker(log);
 		model.fillPage();
+		model.makeFile();
 	}
 }
