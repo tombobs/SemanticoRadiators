@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semantico.radiators.svn.PageMaker;
+import com.semantico.radiators.svn.RevisionMaker;
 import com.semantico.radiators.svn.SVNLogPuller;
 
 @WebServlet("/SubversionLogger")
@@ -15,13 +15,13 @@ public class SubversionLogger extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private SVNLogPuller logPuller;
-	private PageMaker pageMake;
+	private RevisionMaker pageMake;
 	
     public SubversionLogger() throws IOException {
         super();
        
         logPuller = new SVNLogPuller();
-        pageMake = new PageMaker(null); //this requires a collection as an argument
+        pageMake = new RevisionMaker(null); //this requires a collection as an argument
 
     }
 
