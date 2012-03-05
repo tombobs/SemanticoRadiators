@@ -91,7 +91,7 @@ public class JIRAServlet extends HttpServlet {
                 String title = entry.getTitle().substring(0, entry.getTitle().indexOf("]")+1);
                 String summary = entry.getTitle().substring(entry.getTitle().indexOf("]")+2);
                 if (summary.length() > 70) { summary = summary.substring(0,66) + "..."; } // truncate long messages
-                JIRADisplayObject dispObj = new JIRADisplayObject(title,summary,entry.getUpdatedDate().toString().substring(0, 20)); 
+                JIRADisplayObject dispObj = new JIRADisplayObject(title,summary,entry.getUpdatedDate().toString().substring(0, 16)); 
                 JIRAstats.add(dispObj);
             }
             

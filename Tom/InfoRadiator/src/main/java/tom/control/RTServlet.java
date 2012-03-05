@@ -8,8 +8,8 @@ package tom.control;
 
 //import com.gargoylesoftware.htmlunit.MockWebConnection;
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.*;
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,10 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedInput;
 import org.apache.commons.codec.binary.Base64;
 
 /**
@@ -47,38 +43,45 @@ public class RTServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             
-            // CONNECT, GET COOKIE
-            //URL url = new URL("https://rt.semantico.com/rt/NoAuth/rss/tomr/a4b194672f263de6/?Order=DESC&Query=+Owner+%3D+'Nobody'+AND+(+Status+%3D+'new'+OR+Status+%3D+'open')&OrderBy=Created");
+            // CONNECT
             URL url = new URL("https://rt.semantico.com/rt/Search/Results.tsv?Order=DESC&Query=+Owner+%3D+'Nobody'+AND+(+Status+%3D+'new'+OR+Status+%3D+'open')&SavedSearchId=&SavedChartSearchId=&OrderBy=Created&Format='%3Ca+href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__id__%3C%2Fa%3E%2FTITLE%3A%23'%2C+'%3Ca+href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__Subject__%3C%2Fa%3E%2FTITLE%3ASubject'%2C+QueueName%2C+ExtendedStatus%2C+CreatedRelative%2C+'%3CA+HREF%3D%22%2Frt%2FTicket%2FDisplay.html%3FAction%3DTake%26id%3D__id__%22%3ETake%3C%2Fa%3E%2FTITLE%3A%26nbsp%3B'+&Page=1&RowsPerPage=50");
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             String userpassword = "tomr" + ":" + "fingletat";
             String encodedAuthorization = Base64.encodeBase64String( userpassword.getBytes() );
             connection.setRequestProperty("Authorization", "Basic " + encodedAuthorization);
-            connection.setRequestMethod("GET");
+            connection.setRequestMethod("POST");
             connection.setDoOutput(true);
             connection.setReadTimeout(10000);                   
             connection.connect();
             connection = (HttpsURLConnection) url.openConnection();
-            //connection.setRequestProperty("Cookie", cookie);
+            //String cookie = connection.getHeaderField("Set-Cookie");
+            
             connection.connect();
+            
+            //connection.setRequestProperty("Cookie", cookie);
+            
             BufferedReader br = new BufferedReader( new InputStreamReader( connection.getInputStream() ) );
             String line;
-            /*
+            
             out.println("<head>");
             out.println("<title>Servlet NewServlet</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<ul>");
-            while ( ())
+            
+            out.println(connection.getContent().toString());
+            /*while ( (line=br.readLine())!=null) {
+                out.println(line);
+            }
+              */  
             out.println("<li>");
-                out.println(connection.getContentType());
             out.println("</li>");
             out.println("</ul>");
             out.println("</body>");
             out.println("</html>");
-/*              
+              
 // make second connnection                 
-                
+    /*            
                 URL ticketURL = new URL("https://rt.semantico.com/rt/Ticket/Display.html?id=" + ticketNum);
                 HttpsURLConnection connection2 = (HttpsURLConnection) ticketURL.openConnection();
               
