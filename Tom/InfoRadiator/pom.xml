@@ -35,6 +35,12 @@
             <artifactId>commons-codec</artifactId>
             <version>1.6</version>
         </dependency>
+        <dependency>
+            <groupId>htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
+            <version>1.14</version>
+	</dependency>
+            
     </dependencies>
     
     <build>

@@ -7,13 +7,8 @@ package tom.control;
 
 
 //import com.gargoylesoftware.htmlunit.MockWebConnection;
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedInput;
 import java.io.*;
 import java.net.URL;
-import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -48,81 +43,39 @@ public class RTServlet extends HttpServlet {
         try {
             
             // CONNECT
-            //URL url = new URL("https://rt.semantico.com/rt/Search/Results.tsv?Order=DESC&Query=+Owner+%3D+'Nobody'+AND+(+Status+%3D+'new'+OR+Status+%3D+'open')&SavedSearchId=&SavedChartSearchId=&OrderBy=Created&Format='%3Ca+href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__id__%3C%2Fa%3E%2FTITLE%3A%23'%2C+'%3Ca+href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__Subject__%3C%2Fa%3E%2FTITLE%3ASubject'%2C+QueueName%2C+ExtendedStatus%2C+CreatedRelative%2C+'%3CA+HREF%3D%22%2Frt%2FTicket%2FDisplay.html%3FAction%3DTake%26id%3D__id__%22%3ETake%3C%2Fa%3E%2FTITLE%3A%26nbsp%3B'+&Page=1&RowsPerPage=50");
-            URL url = new URL ("https://rt.semantico.com/rt/NoAuth/rss/tomr/a4b194672f263de6/?Order=DESC&Query=+Owner+%3D+'Nobody'+AND+(+Status+%3D+'new'+OR+Status+%3D+'open')&OrderBy=Created");
+            URL url = new URL("https://rt.semantico.com/rt/Search/Results.tsv?Order=DESC&Query=+Owner+%3D+'Nobody'+AND+(+Status+%3D+'new'+OR+Status+%3D+'open')&SavedSearchId=&SavedChartSearchId=&OrderBy=Created&Format='%3Ca+href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__id__%3C%2Fa%3E%2FTITLE%3A%23'%2C+'%3Ca+href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__Subject__%3C%2Fa%3E%2FTITLE%3ASubject'%2C+QueueName%2C+ExtendedStatus%2C+CreatedRelative%2C+'%3CA+HREF%3D%22%2Frt%2FTicket%2FDisplay.html%3FAction%3DTake%26id%3D__id__%22%3ETake%3C%2Fa%3E%2FTITLE%3A%26nbsp%3B'+&Page=1&RowsPerPage=50");
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             String userpassword = "tomr" + ":" + "fingletat";
             String encodedAuthorization = Base64.encodeBase64String( userpassword.getBytes() );
-            connection.setRequestProperty("Authorization", "Basic " + encodedAuthorization);
-            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Authorization", "Basic "+encodedAuthorization);
+            connection.setRequestMethod("GET");
             connection.setDoOutput(true);
             connection.setReadTimeout(10000);                   
             connection.connect();
-            connection = (HttpsURLConnection) url.openConnection();
-            //String cookie = connection.getHeaderField("Set-Cookie");
-            
-            connection.connect();
-            
-            //connection.setRequestProperty("Cookie", cookie);
-            
-            BufferedReader br = new BufferedReader( new InputStreamReader( connection.getInputStream() ) );
-            String line;
-            
+            //URLFetchWebConnection fwc;
             out.println("<head>");
             out.println("<title>Servlet NewServlet</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<ul>");
-            
-         /*   // WHAT I WANT TO DO - DENIED ACCESS
-            while ( (line=br.readLine())!=null) {
-                out.println(line);
-            }
-        */     
-            SyndFeedInput input = new SyndFeedInput();
-            SyndFeed feed = input.build(new BufferedReader(new InputStreamReader(connection.getInputStream())));
-            List<SyndEntry> list = feed.getEntries();
-            SyndEntry entry = list.get(0);
+            BufferedReader br = new BufferedReader ( new InputStreamReader (connection.getInputStream()) );
+            String line;
+            //while ( (line=br.readLine())!=null) {
                 out.println("<li>");
-                out.println("desc :" + entry.getDescription().toString());
-                out.println("author :" +entry.getAuthor());
-                out.println("title" +entry.getTitle());
+                
                 out.println("</li>");
-            
-          
-            
-            
+            //}
             out.println("</ul>");
             out.println("</body>");
             out.println("</html>");
+        }  
               
-// make second connnection                 
-    /*            
-                URL ticketURL = new URL("https://rt.semantico.com/rt/Ticket/Display.html?id=" + ticketNum);
-                HttpsURLConnection connection2 = (HttpsURLConnection) ticketURL.openConnection();
-              
-                connection2.setRequestProperty("Authorization", "Basic "+encodedAuthorization);
-                connection2.setRequestMethod("GET");
-                connection2.setDoOutput(true);
-                connection2.setReadTimeout(10000);  
-                connection2.setRequestProperty("use_intranet", "true");
-                connection2.connect();
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection2.getInputStream()));
-                String line;
-                while ((line=in.readLine())!=null) {
-                    out.println(line);
-                }
-                in.close();
-                //String summary = entry.getTitle();
-                //out.println(ticketNum + summary + "<br/>");    
-*/
-        }
         catch (IOException ie) {
             throw ie;
         }
-        catch (FeedException fe) {
+        /*catch (FeedException fe) {
             throw new ServletException (fe);
-        }
+        }*/
         
     }
 
