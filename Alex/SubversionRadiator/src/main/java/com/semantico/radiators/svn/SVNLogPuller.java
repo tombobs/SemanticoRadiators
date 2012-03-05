@@ -1,3 +1,5 @@
+package com.semantico.radiators.svn;
+
 import java.io.IOException;
 import java.util.Collection;
 import org.tmatesoft.svn.core.SVNException;
@@ -10,7 +12,7 @@ import org.tmatesoft.svn.core.wc.DefaultSVNRepositoryPool;
 import org.tmatesoft.svn.core.wc.SVNWCUtil;
 import freemarker.template.TemplateException;
 
-public class Radiation {
+public class SVNLogPuller {
 
 	static SVNRepository repository = null;
 	static String url = "https://svn.semantico.net/repos/main";
@@ -53,7 +55,7 @@ public class Radiation {
 	
 	//Calls the MakePage class to sort out the radiator page.
 	public static void updatePage() throws IOException, TemplateException {
-		MakePage model = new MakePage(log);
+		PageMaker model = new PageMaker(log);
 		model.fillPage();
 	}
 }

@@ -1,3 +1,5 @@
+package com.semantico.radiators.svn;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -15,7 +17,7 @@ import freemarker.template.Template;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateException;
 
-public class MakePage {
+public class PageMaker {
 	
 	Collection<SVNLogEntry> logEntries;
 	
@@ -30,7 +32,7 @@ public class MakePage {
 	Template page;
 
 	//Gets passed the LogEntry Collection from the radiation page
-	public MakePage(Collection<SVNLogEntry> log) throws IOException {
+	public PageMaker(Collection<SVNLogEntry> log) throws IOException {
 		logEntries = log;
 		Configuration cfg = new Configuration();
 		cfg.setDirectoryForTemplateLoading(new File("/Users/panda/SemanticoRadiators/Alex/SVNRadiatorWithSVNKit/"));
@@ -117,6 +119,7 @@ public class MakePage {
 	public void fillPage() throws TemplateException, IOException {
 		//at the moment this is making an output stream but I need this to make a file. This is the final piece of the jigsaw I think!
 		Writer out = new OutputStreamWriter(System.out);
+		
 		page.process(root,out);
 		out.flush();
 	}
