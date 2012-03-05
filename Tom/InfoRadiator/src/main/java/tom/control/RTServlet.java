@@ -12,20 +12,21 @@ import java.net.URL;
 import java.util.*;
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.FeedException;
+import com.sun.syndication.io.SyndFeedInput;
 import org.apache.commons.codec.binary.Base64;
 
 /**
  *
  * @author Tom
  */
-@WebServlet(name = "RTServlet", urlPatterns = {"/RTServlet"})
 public class RTServlet extends HttpServlet {
 
     /**
@@ -38,16 +39,7 @@ public class RTServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    public class SyndEntryComparable implements Comparator<SyndEntry>{
-
-    @Override
-    public int compare(SyndEntry s1, SyndEntry s2) {
-        Date d1 = (s1.getUpdatedDate() != null) ? s1.getUpdatedDate() : s1.getPublishedDate() ;
-        Date d2 = (s2.getUpdatedDate() != null) ? s2.getUpdatedDate() : s2.getPublishedDate() ;
-        return (d1.compareTo(d2));
-    }
-    
-}   private static final Logger logger = LoggerFactory.getLogger(RTServlet.class);
+    private static final Logger logger = LoggerFactory.getLogger(RTServlet.class);
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -56,7 +48,8 @@ public class RTServlet extends HttpServlet {
         try {
             
             // CONNECT, GET COOKIE
-            URL url = new URL("https://rt.semantico.com/rt/");
+            //URL url = new URL("https://rt.semantico.com/rt/NoAuth/rss/tomr/a4b194672f263de6/?Order=DESC&Query=+Owner+%3D+'Nobody'+AND+(+Status+%3D+'new'+OR+Status+%3D+'open')&OrderBy=Created");
+            URL url = new URL("https://rt.semantico.com/rt/Search/Results.tsv?Order=DESC&Query=+Owner+%3D+'Nobody'+AND+(+Status+%3D+'new'+OR+Status+%3D+'open')&SavedSearchId=&SavedChartSearchId=&OrderBy=Created&Format='%3Ca+href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__id__%3C%2Fa%3E%2FTITLE%3A%23'%2C+'%3Ca+href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__Subject__%3C%2Fa%3E%2FTITLE%3ASubject'%2C+QueueName%2C+ExtendedStatus%2C+CreatedRelative%2C+'%3CA+HREF%3D%22%2Frt%2FTicket%2FDisplay.html%3FAction%3DTake%26id%3D__id__%22%3ETake%3C%2Fa%3E%2FTITLE%3A%26nbsp%3B'+&Page=1&RowsPerPage=50");
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             String userpassword = "tomr" + ":" + "fingletat";
             String encodedAuthorization = Base64.encodeBase64String( userpassword.getBytes() );
@@ -65,28 +58,21 @@ public class RTServlet extends HttpServlet {
             connection.setDoOutput(true);
             connection.setReadTimeout(10000);                   
             connection.connect();
-            String cookie = connection.getHeaderField("Set-Cookie");
-            url = new URL("https://rt.semantico.com/rt/Ticket/Display.html?id=18564");
             connection = (HttpsURLConnection) url.openConnection();
-            connection.setRequestProperty("Cookie", cookie);
+            //connection.setRequestProperty("Cookie", cookie);
             connection.connect();
-            
+            BufferedReader br = new BufferedReader( new InputStreamReader( connection.getInputStream() ) );
+            String line;
+            /*
             out.println("<head>");
             out.println("<title>Servlet NewServlet</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<ul>");
-            
-            //out.println(cookie);
-            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String line;
-            while ((line=br.readLine())!=null) {
-                out.println("<li>");
-                out.println(line);
-                out.println("</li>");
-                
-            }
-            
+            while ( ())
+            out.println("<li>");
+                out.println(connection.getContentType());
+            out.println("</li>");
             out.println("</ul>");
             out.println("</body>");
             out.println("</html>");
@@ -115,6 +101,7 @@ public class RTServlet extends HttpServlet {
         catch (IOException ie) {
             throw ie;
         }
+        
         
     }
 

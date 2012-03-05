@@ -18,21 +18,19 @@ import java.util.*;
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.misc.BASE64Encoder;
-import tom.model.DisplayObject;
+import tom.model.JIRADisplayObject;
 
 
 /**
  *
  * @author Tom
  */
-@WebServlet(name = "ReadRssServlet", urlPatterns = {"/new"})
 public class JIRAServlet extends HttpServlet {
 
     /**
@@ -45,6 +43,7 @@ public class JIRAServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     public class SyndEntryComparable implements Comparator<SyndEntry>{
  
     
@@ -69,11 +68,10 @@ public class JIRAServlet extends HttpServlet {
         try {
             
         // GET DATA FROM RSS FEED  
-            URL url = new URL("https://jira.semantico.com/sr/jira.issueviews:searchrequest-rss/temp/SearchRequest.xml?jqlQuery=ORDER+BY+updated+DESC%2C+key+DESC&tempMax=20");
+            URL url = new URL("https://jira.semantico.com/sr/jira.issueviews:searchrequest-rss/temp/SearchRequest.xml?jqlQuery=ORDER+BY+updated+DESC%2C+key+DESC&tempMax=5");
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-            BASE64Encoder enc = new sun.misc.BASE64Encoder();
             String userpassword = "tomr" + ":" + "j1glets";
-            String encodedAuthorization = enc.encode( userpassword.getBytes() );
+            String encodedAuthorization = Base64.encodeBase64String(userpassword.getBytes());
             connection.setRequestProperty("Authorization", "Basic "+encodedAuthorization);
             connection.setRequestMethod("GET");
             connection.setDoOutput(true);
@@ -85,41 +83,25 @@ public class JIRAServlet extends HttpServlet {
             SyndFeed feed = input.build(new BufferedReader(new InputStreamReader(connection.getInputStream())));
             List<SyndEntry> list = feed.getEntries();
             
-            List<DisplayObject> JIRAstats = new ArrayList<DisplayObject>();
-            
-            out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<ul>");
+            List<JIRADisplayObject> JIRAstats = new ArrayList<JIRADisplayObject>();
             
             for (SyndEntry entry : list) {
                 fixDates(entry);
                 String description = entry.toString();
-                String updated = description.substring(description.indexOf("Updated: ")+9,description.indexOf("Updated: ") + 20);
                 String title = entry.getTitle().substring(0, entry.getTitle().indexOf("]")+1);
                 String summary = entry.getTitle().substring(entry.getTitle().indexOf("]")+2);
-                if (summary.length() > 70) { summary = summary.substring(0,66) + "...";}
-                DisplayObject dispObj = new DisplayObject(title,summary,entry.getUpdatedDate().toString());
+                if (summary.length() > 70) { summary = summary.substring(0,66) + "..."; } // truncate long messages
+                JIRADisplayObject dispObj = new JIRADisplayObject(title,summary,entry.getUpdatedDate().toString().substring(0, 20)); 
                 JIRAstats.add(dispObj);
-                
-                out.println(title + " - " + summary + " - " + updated);
             }
-
-            //DisplayObject dispObj = new DisplayObject("title","summary","lUpdate");
-            //request.setAttribute("dispObj", dispObj);
+            
+            JIRADisplayObject dispObj = new JIRADisplayObject("title","summary","lUpdate");
+            request.setAttribute("dispObj", dispObj);
             
             request.setAttribute("JIRAstats",JIRAstats);
                        
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/showSummaries (2).ftl");
-            rd.forward(request, response);
-
-            
-            
-            
-            out.println("</ul>");
-            out.println("</body>");
-            out.println("</html>");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/showSummaries.ftl");
+            rd.forward(request, response);  
            
         } 
         catch (IOException ie) {
@@ -129,7 +111,6 @@ public class JIRAServlet extends HttpServlet {
             throw new ServletException(fe);
         }     
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP

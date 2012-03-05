@@ -16,21 +16,19 @@ import java.util.*;
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.misc.BASE64Encoder;
-import tom.model.DisplayObject;
+import tom.model.JIRADisplayObject;
 
 
 /**
  *
  * @author Tom
  */
-@WebServlet(name = "ReadRssServlet", urlPatterns = {"/new"})
 public class ReadRssServlet extends HttpServlet {
 
     /**
@@ -66,9 +64,9 @@ public class ReadRssServlet extends HttpServlet {
         // GET DATA FROM RSS FEED  
             URL url = new URL("https://jira.semantico.com/sr/jira.issueviews:searchrequest-rss/temp/SearchRequest.xml?jqlQuery=status+in+%28New%2C+Open%2C+Reopened%2C+%22In+Progress%22%2C+%22Need+Feedback%22%2C+%22Ready+for+QA%22%2C+%22In+Development%22%2C+%22Awaiting+Release%22%2C+Deployed%2C+%22Customer+Confirmation%22%29+AND+resolution+%3D+Unresolved+AND+assignee+%3D+maint-stack+ORDER+BY+updated+DESC%2C+key+DESC&tempMax=5");
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-            BASE64Encoder enc = new sun.misc.BASE64Encoder();
+            
             String userpassword = "tomr" + ":" + "j1glets";
-            String encodedAuthorization = enc.encode( userpassword.getBytes() );
+            String encodedAuthorization = Base64.encodeBase64String(userpassword.getBytes());
             connection.setRequestProperty("Authorization", "Basic "+encodedAuthorization);
             connection.setRequestMethod("GET");
             connection.setDoOutput(true);
@@ -82,14 +80,14 @@ public class ReadRssServlet extends HttpServlet {
             SyndFeed feed = input.build(new BufferedReader(new InputStreamReader(connection.getInputStream())));
             List<SyndEntry> list = feed.getEntries();
             
-            List<DisplayObject> JIRAstats = new ArrayList<DisplayObject>();
+            List<JIRADisplayObject> JIRAstats = new ArrayList<JIRADisplayObject>();
             
             for (SyndEntry entry : list) {
                 String description = entry.getDescription().getValue();
                 String updated = description.substring(description.indexOf("Updated: ")+9,description.indexOf("Updated: ") + 20);
                 String title = entry.getTitle().substring(0, entry.getTitle().indexOf("]")+1);
                 String summary = entry.getTitle().substring(entry.getTitle().indexOf("]")+2);
-                DisplayObject dispObj = new DisplayObject(title,summary,updated);
+                JIRADisplayObject dispObj = new JIRADisplayObject(title,summary,updated);
                 JIRAstats.add(dispObj);
             }
             //DisplayObject dispObj = new DisplayObject("title","summary","lUpdate");

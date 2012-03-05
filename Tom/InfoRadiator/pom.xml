@@ -28,9 +28,7 @@
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
+            <artifactId>servlet-api</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
@@ -38,5 +36,12 @@
             <version>1.6</version>
         </dependency>
     </dependencies>
-	
+    
+    <build>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+    </build>
+    
+    <properties>
+        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
+    </properties>
 </project>

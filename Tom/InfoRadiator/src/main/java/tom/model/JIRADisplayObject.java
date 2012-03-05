@@ -8,15 +8,15 @@ package tom.model;
  *
  * @author Tom
  */
-public class DisplayObject {
+public class JIRADisplayObject {
     // VARIABLES
     public String title,summary,lastUpdate;
    
     // CONSTRUCTORS
-    public DisplayObject(){}
-    public DisplayObject(String title, String summary, String lastUpdate) {
+    public JIRADisplayObject(){}
+    public JIRADisplayObject(String title, String summary, String lastUpdate) {
         this.title = title;
-        this.summary = summary;
+        this.summary = summary.replaceAll("<", "&lt;");
         this.lastUpdate = lastUpdate;
     }
     
