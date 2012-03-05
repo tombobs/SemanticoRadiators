@@ -17,40 +17,40 @@ public class DataModel {
 
 		for (int i = 0; i < 8; i++) {
 			String revisionName = "rev" + (i + 1);
-			// map for revision
+			//Map for revision.
 			Map<String, String> revision = new HashMap<String, String>();
-			// put it in root map
+			//Put it in root map.
 			root.put(revisionName, revision);
-			// add the SVNENtry values
-			revision.put("project", projectName);
-			revision.put("author", author);
-			revision.put("date", date);
-			revision.put("message", message);
+			//Add the map for each revision object, with null values.
+			revision.put("project", null);
+			revision.put("author", null);
+			revision.put("date", null);
+			revision.put("message", null);
 		}
 	}
 
-	public void setProject() {
+	public void setProject(String revNumber, String value) {
 	}
 	
 	public String getProject() {	
 		return null;
 	}
 	
-	public void setAuthor() {
+	public void setAuthor(String revNumber, String value) {
 	}
 
 	public String getAuthor() {
 		return null;
 	}
 
-	public void setDate() {
+	public void setDate(String revNumber, String value) {
 	}
 
 	public String getDate() {
 		return null;
 	}
 	
-	public void setMessage() {
+	public void setMessage(String revNumber, String value) {
 	}
 
 	public String getMessage() {
