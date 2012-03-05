@@ -7,9 +7,13 @@ package tom.control;
 
 
 //import com.gargoylesoftware.htmlunit.MockWebConnection;
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.FeedException;
+import com.sun.syndication.io.SyndFeedInput;
 import java.io.*;
-import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,7 +48,8 @@ public class RTServlet extends HttpServlet {
         try {
             
             // CONNECT
-            URL url = new URL("https://rt.semantico.com/rt/Search/Results.tsv?Order=DESC&Query=+Owner+%3D+'Nobody'+AND+(+Status+%3D+'new'+OR+Status+%3D+'open')&SavedSearchId=&SavedChartSearchId=&OrderBy=Created&Format='%3Ca+href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__id__%3C%2Fa%3E%2FTITLE%3A%23'%2C+'%3Ca+href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__Subject__%3C%2Fa%3E%2FTITLE%3ASubject'%2C+QueueName%2C+ExtendedStatus%2C+CreatedRelative%2C+'%3CA+HREF%3D%22%2Frt%2FTicket%2FDisplay.html%3FAction%3DTake%26id%3D__id__%22%3ETake%3C%2Fa%3E%2FTITLE%3A%26nbsp%3B'+&Page=1&RowsPerPage=50");
+            //URL url = new URL("https://rt.semantico.com/rt/Search/Results.tsv?Order=DESC&Query=+Owner+%3D+'Nobody'+AND+(+Status+%3D+'new'+OR+Status+%3D+'open')&SavedSearchId=&SavedChartSearchId=&OrderBy=Created&Format='%3Ca+href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__id__%3C%2Fa%3E%2FTITLE%3A%23'%2C+'%3Ca+href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__Subject__%3C%2Fa%3E%2FTITLE%3ASubject'%2C+QueueName%2C+ExtendedStatus%2C+CreatedRelative%2C+'%3CA+HREF%3D%22%2Frt%2FTicket%2FDisplay.html%3FAction%3DTake%26id%3D__id__%22%3ETake%3C%2Fa%3E%2FTITLE%3A%26nbsp%3B'+&Page=1&RowsPerPage=50");
+            URL url = new URL ("https://rt.semantico.com/rt/NoAuth/rss/tomr/a4b194672f263de6/?Order=DESC&Query=+Owner+%3D+'Nobody'+AND+(+Status+%3D+'new'+OR+Status+%3D+'open')&OrderBy=Created");
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             String userpassword = "tomr" + ":" + "fingletat";
             String encodedAuthorization = Base64.encodeBase64String( userpassword.getBytes() );
@@ -69,13 +74,24 @@ public class RTServlet extends HttpServlet {
             out.println("<body>");
             out.println("<ul>");
             
-            out.println(connection.getContent().toString());
-            /*while ( (line=br.readLine())!=null) {
+         /*   // WHAT I WANT TO DO - DENIED ACCESS
+            while ( (line=br.readLine())!=null) {
                 out.println(line);
             }
-              */  
-            out.println("<li>");
-            out.println("</li>");
+        */     
+            SyndFeedInput input = new SyndFeedInput();
+            SyndFeed feed = input.build(new BufferedReader(new InputStreamReader(connection.getInputStream())));
+            List<SyndEntry> list = feed.getEntries();
+            SyndEntry entry = list.get(0);
+                out.println("<li>");
+                out.println("desc :" + entry.getDescription().toString());
+                out.println("author :" +entry.getAuthor());
+                out.println("title" +entry.getTitle());
+                out.println("</li>");
+            
+          
+            
+            
             out.println("</ul>");
             out.println("</body>");
             out.println("</html>");
@@ -104,7 +120,9 @@ public class RTServlet extends HttpServlet {
         catch (IOException ie) {
             throw ie;
         }
-        
+        catch (FeedException fe) {
+            throw new ServletException (fe);
+        }
         
     }
 
