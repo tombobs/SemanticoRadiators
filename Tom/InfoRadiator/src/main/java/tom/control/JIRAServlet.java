@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tom.model.JIRADisplayObject;
+import tom.model.JIRAdisplay;
 
 
 /**
@@ -83,7 +83,7 @@ public class JIRAServlet extends HttpServlet {
             SyndFeed feed = input.build(new BufferedReader(new InputStreamReader(connection.getInputStream())));
             List<SyndEntry> list = feed.getEntries();
             
-            List<JIRADisplayObject> JIRAstats = new ArrayList<JIRADisplayObject>();
+            List<JIRAdisplay> JIRAstats = new ArrayList<JIRAdisplay>();
             
             for (SyndEntry entry : list) {
                 fixDates(entry);
@@ -91,11 +91,11 @@ public class JIRAServlet extends HttpServlet {
                 String title = entry.getTitle().substring(0, entry.getTitle().indexOf("]")+1);
                 String summary = entry.getTitle().substring(entry.getTitle().indexOf("]")+2);
                 if (summary.length() > 70) { summary = summary.substring(0,66) + "..."; } // truncate long messages
-                JIRADisplayObject dispObj = new JIRADisplayObject(title,summary,entry.getUpdatedDate().toString().substring(0, 16)); 
+                JIRAdisplay dispObj = new JIRAdisplay(title,summary,entry.getUpdatedDate().toString().substring(0, 16)); 
                 JIRAstats.add(dispObj);
             }
             
-            JIRADisplayObject dispObj = new JIRADisplayObject("title","summary","lUpdate");
+            JIRAdisplay dispObj = new JIRAdisplay("title","summary","lUpdate");
             request.setAttribute("dispObj", dispObj);
             
             request.setAttribute("JIRAstats",JIRAstats);
