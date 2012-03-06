@@ -30,6 +30,8 @@ public class DataModel {
 	}
 
 	public void setProject(String revNumber, String value) {
+		root.revNumber.put("project", value);
+		root.put(revNumber, "project", value);
 	}
 	
 	public String getProject() {	
@@ -37,6 +39,7 @@ public class DataModel {
 	}
 	
 	public void setAuthor(String revNumber, String value) {
+		revNumber.put("author", value);
 	}
 
 	public String getAuthor() {
@@ -44,6 +47,7 @@ public class DataModel {
 	}
 
 	public void setDate(String revNumber, String value) {
+		revNumber.put("date", value);
 	}
 
 	public String getDate() {
@@ -51,6 +55,7 @@ public class DataModel {
 	}
 	
 	public void setMessage(String revNumber, String value) {
+		revNumber.put("message", value);
 	}
 
 	public String getMessage() {

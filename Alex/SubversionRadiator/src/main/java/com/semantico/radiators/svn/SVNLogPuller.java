@@ -32,7 +32,6 @@ public class SVNLogPuller {
 		//Calculates the number of the 8th previously generated revision.
 		tenRevs = latestRev - 7;
 		makeEntries();
-		updatePage();
 	}
 	
 	//This sets everything up so that the SVNKit will play nice.
@@ -53,10 +52,14 @@ public class SVNLogPuller {
 		log = repository.log(new String[]{}, null, tenRevs, latestRev, true, false); //This is throwing a warning because of Object types, but this really can't be avoided right now.
 	}
 	
-	//Calls the MakePage class to sort out the radiator page.
-	public static void updatePage() throws IOException, TemplateException {
-		RevisionMaker model = new RevisionMaker(log);
-		model.fillPage();
-		model.makeFile();
+	public Collection<SVNLogEntry> returnLog() {
+		return log;
 	}
+	
+	// //Calls the MakePage class to sort out the radiator page.
+	// public static void updatePage() throws IOException, TemplateException {
+	// RevisionMaker model = new RevisionMaker(log);
+	// model.fillPage();
+	// model.makeFile();
+	// }
 }

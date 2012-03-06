@@ -5,8 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Collection;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
@@ -15,18 +14,17 @@ import freemarker.template.TemplateException;
 
 public class HTMLMaker {
 	
-	HashMap<String, Map<String, String>> dataModel;
 	Template htmlPage;
+	Collection<FormattedLogEntry> dataModel;
 	
 	//should take in a collection (the model) and it should take in a template
-	public HTMLMaker(HashMap<String, Map<String, String>> model, Template page) throws IOException {
+	public HTMLMaker(Collection<FormattedLogEntry> entries) throws IOException {
 		
 		Configuration cfg = new Configuration();
 		cfg.setDirectoryForTemplateLoading(new File("/Users/panda/SemanticoRadiators/Alex/SubversionRadiator/"));
 		cfg.setObjectWrapper(new DefaultObjectWrapper());
-		page = cfg.getTemplate("OpenProjects.ftl");
-		dataModel = model;
-		htmlPage = page;
+		htmlPage = cfg.getTemplate("OpenProjects.ftl");
+		dataModel = entries;
 	}
 
 	//This takes the data-model and the template and merges them together - writes to the System output.

@@ -35,12 +35,7 @@ public class RevisionMaker {
 	//Gets passed the LogEntry Collection from the SVNLogPuller object.
 	public RevisionMaker(Collection<SVNLogEntry> log) throws IOException {
 		logEntries = log;
-		Configuration cfg = new Configuration();
-		cfg.setDirectoryForTemplateLoading(new File("/Users/panda/SemanticoRadiators/Alex/SubversionRadiator/"));
-		cfg.setObjectWrapper(new DefaultObjectWrapper());
-		page = cfg.getTemplate("OpenProjects.ftl");
 		getEntryData();
-		createModel();
 	}
 	
 	//Retrieves all of the radiator relevant data from the entry objects.
@@ -82,6 +77,7 @@ public class RevisionMaker {
 		}
 		return nameString.toString();
 	}
+	
 	//Extracts a time String from a Date object.
 	private String createTime(Date theDate) {
 		StringBuilder timeString = new StringBuilder(DateFormat.getTimeInstance().format(theDate).toString());
@@ -96,44 +92,4 @@ public class RevisionMaker {
 		}
 		return messageString.toString();
 	}
-
-	//Fills the model
-	public void fillModel() {
-		
-	}
-	
-	//Builds to freemarker model with the corresponding entry object data.
-	public void createModel() {
-		//Create root map.
-		root = new HashMap<String, Map<String, String>>();
-		//Loops through and makes 10 revision maps for the model, each with their own identifier.
-		for(int i = 0; i < 8; i++) {
-			String revisionName = "rev"+(i+1);
-			//Map for revision.
-			Map<String, String> revision = new HashMap<String, String>();
-			//Put it in root map.
-			root.put(revisionName, revision);
-			//Add the SVNENtry values.
-			revision.put("author", author[i]);			
-			revision.put("date", dateString[i]);
-			revision.put("message", message[i]);
-			revision.put("project", projectName[i]);
-		}
-	}
-	
-	//This takes the data-model and the template and merges them together - writes to the System output.
-	public void fillPage() throws TemplateException, IOException {
-		Writer out = new OutputStreamWriter(System.out);
-		page.process(root,out);
-		out.flush();
-	}
-	
-	//This takes the data-model and the template and merges them together - writes to a file.
-	public void makeFile() throws IOException, TemplateException {
-		File newHTML = new File("/Users/panda/SemanticoRadiators/Alex/SubversionRadiator/svnRad.html");
-		FileWriter writer = new FileWriter(newHTML);
-		page.process(root,writer);
-		writer.flush();
-	}
-
 }
