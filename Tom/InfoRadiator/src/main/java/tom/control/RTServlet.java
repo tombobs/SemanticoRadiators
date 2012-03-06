@@ -7,22 +7,19 @@ package tom.control;
 
 
 //import com.gargoylesoftware.htmlunit.MockWebConnection;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlForm;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
-import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
+
 import java.io.*;
-import java.net.URL;
-import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.apache.commons.codec.binary.Base64;
-
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.*;
+import java.util.ArrayList;
+import java.util.List;
+import tom.model.RTdisplay;
 /**
  *
  * @author Tom
@@ -58,30 +55,38 @@ public class RTServlet extends HttpServlet {
             connection.setReadTimeout(10000);                   
             connection.connect();
 */
-            final WebClient wc = new WebClient();
-            final HtmlPage page1 = (HtmlPage) wc.getPage("https://rt.semantico.com/rt/");
-            final HtmlForm loginForm = page1.getFormByName("login");
-            final HtmlTextInput username = (HtmlTextInput) loginForm.getInputByName("user"),
-                   password = (HtmlTextInput) loginForm.getInputByName("pass");
-            final HtmlSubmitInput submitButton = (HtmlSubmitInput) loginForm.getInputByName("next");
+            WebClient wc = new WebClient();
+            wc.setJavaScriptEnabled(false);
+            HtmlPage page1 = (HtmlPage) wc.getPage("https://rt.semantico.com/rt/");
+            HtmlForm loginForm = page1.getFormByName("login");
+            HtmlTextInput username = (HtmlTextInput) loginForm.getInputByName("user");
+            HtmlPasswordInput password = (HtmlPasswordInput)loginForm.getInputByName("pass");
+            HtmlSubmitInput submitButton = (HtmlSubmitInput) loginForm.getInputByValue("Login");
             username.setValueAttribute("tomr");
             password.setValueAttribute("fingletat");
-            final HtmlPage page2 = (HtmlPage) submitButton.click();
-
-           
+            HtmlPage page2 = (HtmlPage) submitButton.click();
+            BufferedReader br = new BufferedReader ( new InputStreamReader ( wc.getPage("https://rt.semantico.com/rt/Search/Results.tsv?Format='%3Ca%20href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__id__%3C%2Fa%3E%2FTITLE%3A%23'%2C%20'%3Ca%20href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__Subject__%3C%2Fa%3E%2FTITLE%3ASubject'%2C%20QueueName%2C%20ExtendedStatus%2C%20CreatedRelative%2C%20'%3CA%20HREF%3D%22%2Frt%2FTicket%2FDisplay.html%3FAction%3DTake%26id%3D__id__%22%3ETake%3C%2Fa%3E%2FTITLE%3A%26nbsp%3B'%20&Order=DESC&OrderBy=Created&Query=%20Owner%20%3D%20'Nobody'%20AND%20(%20Status%20%3D%20'new'%20OR%20Status%20%3D%20'open')").getWebResponse().getContentAsStream() ));
             
             out.println("<head>");
             out.println("<title>Servlet NewServlet</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<ul>");
-            /*BufferedReader br = new BufferedReader ( new InputStreamReader (connection.getInputStream()) );
-            String line;
-            //while ( (line=br.readLine())!=null) {
+
+            List<RTdisplay> RTstats = new ArrayList<RTdisplay>();
+            String line=br.readLine(),ticketNum,summary,queue;
+            int count = 0;
+            while ( (line=br.readLine() )!=null && count<3) {
+                String[] fields = line.split("\t");
+                ticketNum = fields[0];
+                //RTdisplay RT = new RTdisplay (ticketNum,summary,queue);
+                //RTstats.add(RT);
+                count++;
                 out.println("<li>");
-                
+                out.println(fields.length);
                 out.println("</li>");
-            //}*/
+            }
+
             out.println("</ul>");
             out.println("</body>");
             out.println("</html>");
@@ -89,11 +94,7 @@ public class RTServlet extends HttpServlet {
               
         catch (IOException ie) {
             throw ie;
-        }
-        /*catch (FeedException fe) {
-            throw new ServletException (fe);
-        }*/
-        
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

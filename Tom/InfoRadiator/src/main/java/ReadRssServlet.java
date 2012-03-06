@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tom.model.JIRADisplayObject;
+import tom.model.JIRAdisplay;
 
 
 /**
@@ -80,14 +80,14 @@ public class ReadRssServlet extends HttpServlet {
             SyndFeed feed = input.build(new BufferedReader(new InputStreamReader(connection.getInputStream())));
             List<SyndEntry> list = feed.getEntries();
             
-            List<JIRADisplayObject> JIRAstats = new ArrayList<JIRADisplayObject>();
+            List<JIRAdisplay> JIRAstats = new ArrayList<JIRAdisplay>();
             
             for (SyndEntry entry : list) {
                 String description = entry.getDescription().getValue();
                 String updated = description.substring(description.indexOf("Updated: ")+9,description.indexOf("Updated: ") + 20);
                 String title = entry.getTitle().substring(0, entry.getTitle().indexOf("]")+1);
                 String summary = entry.getTitle().substring(entry.getTitle().indexOf("]")+2);
-                JIRADisplayObject dispObj = new JIRADisplayObject(title,summary,updated);
+                JIRAdisplay dispObj = new JIRAdisplay(title,summary,updated);
                 JIRAstats.add(dispObj);
             }
             //DisplayObject dispObj = new DisplayObject("title","summary","lUpdate");
