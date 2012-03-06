@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="bootstrap/css/jenkins-radiator.css">
         <link rel="stylesheet" href="bootstrap/css/feeds.css">
         <link rel="stylesheet" href="bootstrap/css/jira.css">
-        <script src="http://code.jquery.com/jquery-latest.js"></script>		
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
     </head>
 
     <body>
@@ -20,8 +20,8 @@
                 <div class="bar notrans"></div>
             </div>
             <div class="fill">
-                <h3 class="container"> <span style="color:#EF6B00">Semantico - </span>  
-                    <span id="headers"> 
+                <h3 class="container"> <span style="color:#EF6B00">Semantico - </span>
+                    <span id="headers">
                         <!-- The order of the #headers has to be the same as the order of the #content-->
                         <span id="header-jenkins"> SIPP<span style="color:#EF6B00">2</span> Jenkins<p id="sorted">Sorted: &#10004;</p> </span>
                         <span id="header-feeds"> Feeds </span>
@@ -33,14 +33,14 @@
         </header>
 
         <div id="content">
-            <div id="jenkins" data-page="jenkins.html">	</div>	
+            <div id="jenkins" data-page="jenkins.html">	</div>
             <div id="feeds" data-page="Feeds.html"> </div>
-            <div id="jira" data-page="jira.html"> </div> 
+            <div id="jira" data-page="jira.html"> </div>
             <div id="subversion" data-page="OpenProjects.html" > </div>
         </div>
 
         <script id="main">
-            window.OurJenkins = (function($) { 		
+            window.OurJenkins = (function($) {
 
                 var loop_i, prog_i, headers, pages, count;
 
@@ -48,7 +48,7 @@
                 loop_i = {
                     time: 10, // in seconds
 
-                    func: function() {	  									
+                    func: function() {
                         prog_i.addClass("notrans").removeClass("hide");
                         setTimeout(function() {
                             prog_i.removeClass("notrans").addClass("hide");
@@ -62,25 +62,25 @@
                         header.show();
                         if (count >= pages.length-1) {
                             count=0;
-                        }		
+                        }
                         else count++;
                         //console.log(count);
                         // Call yourself
-                        setTimeout(arguments.callee, window.time * 1000);						
+                        setTimeout(arguments.callee, window.time * 1000);
                     },
 
-                    init: function() {						
-                        prog_i 	= $('.bar');
-                        headers	= $('#headers > span');
-                        pages 	= $('#content > div'); //all div-s in the #content
-                        count 	= 0;
-                        loop_i.func();						
+                    init: function() {
+                        prog_i = $('.bar');
+                        headers = $('#headers > span');
+                        pages = $('#content > div'); //all div-s in the #content
+                        count = 0;
+                        loop_i.func();
                     }
                 };
 
                 // Document Ready
                 $(function() {
-                    loop_i.init();					
+                    loop_i.init();
                 });
 
             })(jQuery);
@@ -90,6 +90,14 @@
                 url: "http://localhost:8080/svnradiator/",
                 success: function(data){
                     $('subversion').html(data);
+                }
+            });
+        </script>
+        <script>
+            $.ajax({
+                url: "http://localhost:8080/jira/",
+                success: function(data){
+                    $('jira').html(data);
                 }
             });
         </script>

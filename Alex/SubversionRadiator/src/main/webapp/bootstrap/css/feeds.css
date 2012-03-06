@@ -1,0 +1,71 @@
+.board_feed {
+	width: 94%;		
+/*	grey gradient: (top, #dfe5f3, #c0d0e0); */
+	background-image: -moz-linear-gradient(top, #dffbff, #c6e7ef);
+	background-image: -ms-linear-gradient(top, #dffbff, #c6e7ef);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dffbff), to(#c6e7ef));
+	background-image: -webkit-linear-gradient(top, #dffbff, #c6e7ef);
+	background-image: -o-linear-gradient(top, #dffbff, #c6e7ef);
+	background-image: linear-gradient(top, #dffbff, #c6e7ef);
+	background-repeat: repeat-x;
+	padding: 20px;
+	border: 1px solid rgb(50,50,50);
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	text-align: left;
+}
+
+.rssHeader {
+	display: none;
+	/*font-weight: bold;
+	font-size: 24px;
+	margin: 20px 0px 16px 0px;*/
+}
+h4 a, h4 a:hover, h4 a:visited {
+	text-decoration: none;
+	font-size: 24px;
+	color: #205060;
+	color: #0077ee;
+	color: #1177CC;
+}
+.rssRow {
+	list-style: none;
+	margin-top: 20px;
+}
+.rssRow div {
+	font-size: 18px;
+	color: #386570;
+	color: #336099;
+	margin: 8px 0px 12px 0px;
+}
+.rssRow p {
+	font-size: 20px;
+	color: #407080;
+	color: #336099;
+	margin-bottom: 22px;
+}
+#responsecontainer {
+	border: 1px solid #444;
+}
+#feed {
+	height: 530px;
+	vertical-align: middle;
+}
+.verticalCenter {
+	height: 600px;
+	display: block;
+	display: table-cell;
+	vertical-align: middle;
+}
+.pic {
+	height: 600px;
+	display: block;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+img {
+	max-width: 580px;
+	max-height: 580px;
+}

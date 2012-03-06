@@ -47,7 +47,7 @@
 
     <servlet-mapping>
     	<servlet-name>svn</servlet-name>
-    	<url-pattern>/*</url-pattern>
+    	<url-pattern>/svn</url-pattern>
     </servlet-mapping>
 
     <!--
