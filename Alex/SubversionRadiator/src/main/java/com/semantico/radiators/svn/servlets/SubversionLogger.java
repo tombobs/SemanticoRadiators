@@ -1,3 +1,9 @@
+//This is the main servlet class for the Subversion statistics portion of the
+//Semantico information radiators project. This dynamically updates the information
+//gathered from the last eight entries in the SVN main repository everytime
+//tha tthe page is refreshed. Commits are shown newest first, and then drop off
+//to be replaced by younger activity. 
+
 package com.semantico.radiators.svn.servlets;
 
 import java.io.IOException;
@@ -25,8 +31,7 @@ public class SubversionLogger extends HttpServlet {
 	private SVNLogPuller logPuller;
 	private HTMLMaker maker;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Collection<FormattedLogEntry> entries = new ArrayList<FormattedLogEntry>();
 		try {
