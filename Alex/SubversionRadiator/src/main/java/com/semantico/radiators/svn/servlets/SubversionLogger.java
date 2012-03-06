@@ -15,7 +15,7 @@ import com.semantico.radiators.svn.DataModel;
 import com.semantico.radiators.svn.FormattedLogEntry;
 import com.semantico.radiators.svn.HTMLMaker;
 import com.semantico.radiators.svn.RevisionMaker;
-import com.semantico.radiators.svn.RevisionMaker2;
+import com.semantico.radiators.svn.RevisionMaker;
 import com.semantico.radiators.svn.SVNLogPuller;
 
 import freemarker.template.TemplateException;
@@ -37,15 +37,10 @@ public class SubversionLogger extends HttpServlet {
         
         for(SVNLogEntry le : logPuller.returnLog()) {
         	//Because it's static I'm not using an instance, I'm using the class methods.
-        	entries.add(RevisionMaker2.convertEntry(le));
+        	entries.add(RevisionMaker.convertEntry(le));
         }
-       
         
-        
-        //model = new DataModel();
-        //revMaker.fillModel(model);
-        
-        maker = new HTMLMaker(model);
+        maker = new HTMLMaker(entries);
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
