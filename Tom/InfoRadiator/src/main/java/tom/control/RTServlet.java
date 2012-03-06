@@ -17,8 +17,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
+import com.gargoylesoftware.htmlunit.ssl.InsecureTrustManager;
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.servlet.RequestDispatcher;
 import tom.model.RTdisplay;
 /**
  *
@@ -57,44 +62,40 @@ public class RTServlet extends HttpServlet {
 */
             WebClient wc = new WebClient();
             wc.setJavaScriptEnabled(false);
-            HtmlPage page1 = (HtmlPage) wc.getPage("https://rt.semantico.com/rt/");
-            HtmlForm loginForm = page1.getFormByName("login");
+            wc.setUseInsecureSSL(true);
+            
+            HtmlPage page = (HtmlPage) wc.getPage("https://rt.semantico.com/rt/");
+            HtmlForm loginForm = page.getFormByName("login");
             HtmlTextInput username = (HtmlTextInput) loginForm.getInputByName("user");
             HtmlPasswordInput password = (HtmlPasswordInput)loginForm.getInputByName("pass");
             HtmlSubmitInput submitButton = (HtmlSubmitInput) loginForm.getInputByValue("Login");
             username.setValueAttribute("tomr");
             password.setValueAttribute("fingletat");
-            HtmlPage page2 = (HtmlPage) submitButton.click();
+            page = (HtmlPage) submitButton.click();
             BufferedReader br = new BufferedReader ( new InputStreamReader ( wc.getPage("https://rt.semantico.com/rt/Search/Results.tsv?Format='%3Ca%20href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__id__%3C%2Fa%3E%2FTITLE%3A%23'%2C%20'%3Ca%20href%3D%22%2Frt%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__Subject__%3C%2Fa%3E%2FTITLE%3ASubject'%2C%20QueueName%2C%20ExtendedStatus%2C%20CreatedRelative%2C%20'%3CA%20HREF%3D%22%2Frt%2FTicket%2FDisplay.html%3FAction%3DTake%26id%3D__id__%22%3ETake%3C%2Fa%3E%2FTITLE%3A%26nbsp%3B'%20&Order=DESC&OrderBy=Created&Query=%20Owner%20%3D%20'Nobody'%20AND%20(%20Status%20%3D%20'new'%20OR%20Status%20%3D%20'open')").getWebResponse().getContentAsStream() ));
-            
-            out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<ul>");
 
             List<RTdisplay> RTstats = new ArrayList<RTdisplay>();
             String line=br.readLine(),ticketNum,summary,queue;
             int count = 0;
-            while ( (line=br.readLine() )!=null && count<3) {
-                
-                
+            while ( (line=br.readLine()) !=null && count<5) {
+                String[] fields = line.split("\t");
+                RTdisplay RTdisp = new RTdisplay(fields[0],fields[1],fields[2]);
+                RTstats.add(RTdisp);
                 count++;
-                out.println("<li>");
-                out.println();
-                out.println("</li>");
             }
-
-            out.println("</ul>");
-            out.println("</body>");
-            out.println("</html>");
+            request.setAttribute("RTstats", RTstats);
+            
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/JIRAServlet");
+            rd.forward(request, response);
         }  
               
         catch (IOException ie) {
             throw ie;
         } 
+        catch (GeneralSecurityException gse) {
+            throw new ServletException(gse);
+        }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP
