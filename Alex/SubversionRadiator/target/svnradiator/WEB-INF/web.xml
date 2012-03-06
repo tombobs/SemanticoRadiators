@@ -4,6 +4,12 @@
     PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
+
+	<servlet>
+		<servlet-name>svn</servlet-name>
+		<servlet-class>com.semantico.radiators.svn.servlets.SubversionLogger</servlet-class>
+	</servlet>
+
     <servlet>
       <servlet-name>freemarker</servlet-name>
       <servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>
@@ -40,10 +46,9 @@
     </servlet>
 
     <servlet-mapping>
-      <servlet-name>freemarker</servlet-name>
-      <url-pattern>*.ftl</url-pattern>
+    	<servlet-name>svn</servlet-name>
+    	<url-pattern>/*</url-pattern>
     </servlet-mapping>
-    ...
 
     <!--
       Prevent the visiting of MVC Views from outside the servlet container.
