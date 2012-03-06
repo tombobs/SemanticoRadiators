@@ -482,3 +482,13 @@ Mar 06, 2012 5:08:36 PM org.apache.catalina.core.ApplicationContext log
 INFO: Manager: install: Installing context configuration at 'file:/C:/Users/Tom/AppData/Local/Temp/context6628648269337758952.xml'
 Mar 06, 2012 5:08:36 PM org.apache.catalina.core.ApplicationContext log
 INFO: Manager: start: Starting web application '/InfoRadiator'
+Mar 06, 2012 5:15:57 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Mar 06, 2012 5:15:57 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Mar 06, 2012 5:15:57 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/InfoRadiator'
+Mar 06, 2012 5:15:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/C:/Users/Tom/AppData/Local/Temp/context7507109224964512398.xml'
+Mar 06, 2012 5:15:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/InfoRadiator'
