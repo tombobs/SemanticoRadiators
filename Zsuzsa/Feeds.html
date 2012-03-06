@@ -8,7 +8,7 @@
         </div>
         <div class="span6"> 
             <div class="verticalCenter">
-                <div id="feed_content"></div> 
+                <div id="feed_content"></div>
             </div>
         </div>
     </div>
@@ -23,10 +23,8 @@
             limit: 4
         });
     });
-</script>	
-<!-- 
-
-This randomly chooses one image from a local directory and changes it in a given interval. 
+</script>
+<!--This randomly chooses one image from a local directory and changes it in a given interval
 
 Another solution is to get the images from a certain FlickR gallery, but it is always starting with the first image.
 This solution can be found in flickr_pics.html
@@ -37,11 +35,11 @@ This solution can be found in flickr_pics.html
     function changeImage() {
         var whichImage = Math.floor(Math.random() * 10) % theImages.length;
         $("#responsecontainer").attr("src", "bootstrap/img/" + theImages[whichImage]);
-    }			
+    }
 
     $(document).ready(
     function() {
-        changeImage();					
+        changeImage();
         var refreshId = self.setTimeout(
         function() {
             changeImage();
