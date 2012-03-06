@@ -77,13 +77,11 @@ public class RTServlet extends HttpServlet {
             String line=br.readLine(),ticketNum,summary,queue;
             int count = 0;
             while ( (line=br.readLine() )!=null && count<3) {
-                String[] fields = line.split("\t");
-                ticketNum = fields[0];
-                //RTdisplay RT = new RTdisplay (ticketNum,summary,queue);
-                //RTstats.add(RT);
+                
+                
                 count++;
                 out.println("<li>");
-                out.println(fields.length);
+                out.println();
                 out.println("</li>");
             }
 
