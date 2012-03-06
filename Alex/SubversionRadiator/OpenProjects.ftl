@@ -9,7 +9,7 @@
 			</div>
 		</header>
 		<div class="row-fluid board_svn">
-            <#list entries as entry>
+            <#list entries?reverse as entry>
 				<div class="row-fluid" >
 					<div class="span2"> 
 						<div class="project r1">${entry.project}</div>
