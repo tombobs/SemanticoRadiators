@@ -1,55 +1,50 @@
 <!DOCTYPE html>
+<center>
+    <div class="row-fluid board_feed">
+        <div class="span6">
+            <div class="verticalCenter pic">
+                <img id="responsecontainer" />
+            </div>
+        </div>
+        <div class="span6"> 
+            <div class="verticalCenter">
+                <div id="feed_content"></div>
+            </div>
+        </div>
+    </div>
+</center>
 
-		<center>
-			<div class="row-fluid board_feed">
-				<div class="span6">
-					<div class="verticalCenter pic">
-						<img id="responsecontainer" />
-					</div>
-				</div>
-				<div class="span6"> 
-					<div class="verticalCenter">
-						<div id="feed_content"></div> 
-					</div>
-				</div>
-			</div>
-		</center>
-		
-		<script src="bootstrap/js/jquery.zrssfeed.min.js" type="text/javascript"></script>
+<script src="bootstrap/js/jquery.zrssfeed.min.js" type="text/javascript"></script>
 
-		
-		<script id="rssfeed" type="text/javascript">
-			$(document).ready(function () {
-				$('#feed_content').rssfeed('http://www.semantico.com/feed/', {
-						limit: 4
-				});
-			});
-		</script>	
-		
-		
-		<!-- 
-		
-			This randomly chooses one image from a local directory and changes it in a given interval. 
-			
-			Another solution is to get the images from a certain FlickR gallery, but it is always starting with the first image.
-			This solution can be found in flickr_pics.html
-		
-		-->
-		<script id="chg_img">
-			var	theImages = new Array("image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg", "image6.jpg");
-			function changeImage() {
-				var whichImage = Math.floor(Math.random() * 10) % theImages.length;
-				$("#responsecontainer").attr("src", "bootstrap/img/" + theImages[whichImage]);
-			}			
 
-			$(document).ready(
-				function() {
-					changeImage();					
-					var refreshId = self.setTimeout(
-						function() {
-							changeImage();
-						}, 16000
-					);
-				}
-			);
-		</script>
+<script id="rssfeed" type="text/javascript">
+    $(document).ready(function () {
+        $('#feed_content').rssfeed('http://www.semantico.com/feed/', {
+            limit: 4
+        });
+    });
+</script>
+<!--This randomly chooses one image from a local directory and changes it in a given interval
+
+Another solution is to get the images from a certain FlickR gallery, but it is always starting with the first image.
+This solution can be found in flickr_pics.html
+
+-->
+<script id="chg_img">
+    var	theImages = new Array("image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg", "image6.jpg");
+    function changeImage() {
+        var whichImage = Math.floor(Math.random() * 10) % theImages.length;
+        $("#responsecontainer").attr("src", "bootstrap/img/" + theImages[whichImage]);
+    }
+
+    $(document).ready(
+    function() {
+        changeImage();
+        var refreshId = self.setTimeout(
+        function() {
+            changeImage();
+        }, 16000
+        );
+    }
+    );
+</script>

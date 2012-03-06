@@ -14,29 +14,17 @@ import freemarker.template.TemplateException;
 
 public class SVNLogPuller {
 
-	static SVNRepository repository = null;
-	static String url = "https://svn.semantico.net/repos/main";
-	//Anonymous login for now - should be fine to work over Semantico network.
-	static String username = "anonymous";
-	static String password = "anonymous";
+	SVNRepository repository = null;
+	String url = "https://svn.semantico.net/repos/main";
+	String username = "anonymous";
+	String password = "anonymous";
 	
-	static long latestRev;
-	static long tenRevs;
-	
-	private static Collection<SVNLogEntry> log;
-	
-	public static void main(String[] args) throws SVNException, IOException, TemplateException {
+	public SVNLogPuller() throws SVNException, IOException, TemplateException {
 		initialSetup();
-		//Returns the latest revision number for the repository.
-		latestRev = repository.getLatestRevision();
-		//Calculates the number of the 8th previously generated revision.
-		tenRevs = latestRev - 7;
-		makeEntries();
-		updatePage();
 	}
 	
 	//This sets everything up so that the SVNKit will play nice.
-	private static void initialSetup() throws SVNException {
+	private void initialSetup() throws SVNException {
 		//For working nicely over http:// and https://.
 		DAVRepositoryFactory.setup();		
 		//For authentication.
@@ -47,16 +35,13 @@ public class SVNLogPuller {
 		repository.setAuthenticationManager(authManager);		
 	}
 	
-	//Makes a collection of log entries from the repositiory.
-	public static void makeEntries() throws SVNException, IOException {
-		//This returns a collection of logEntry objects. Needs an array of paths to look in (empty String[]), start and end revision also passed in.
-		log = repository.log(new String[]{}, null, tenRevs, latestRev, true, false); //This is throwing a warning because of Object types, but this really can't be avoided right now.
-	}
-	
-	//Calls the MakePage class to sort out the radiator page.
-	public static void updatePage() throws IOException, TemplateException {
-		RevisionMaker model = new RevisionMaker(log);
-		model.fillPage();
-		model.makeFile();
+	public Collection<SVNLogEntry> returnLog() {
+		try {
+			long latestRev = repository.getLatestRevision();
+			long tenRevs = latestRev - 7;
+			return repository.log(new String[]{}, null, tenRevs, latestRev, true, false);
+		} catch (SVNException e) {
+			throw new RuntimeException(e);
+		} //This is throwing a warning because of Object types, but this really can't be avoided right now.
 	}
 }

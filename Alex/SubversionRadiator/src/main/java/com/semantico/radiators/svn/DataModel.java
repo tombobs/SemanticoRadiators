@@ -28,32 +28,4 @@ public class DataModel {
 			revision.put("message", null);
 		}
 	}
-
-	public void setProject(String revNumber, String value) {
-	}
-	
-	public String getProject() {	
-		return null;
-	}
-	
-	public void setAuthor(String revNumber, String value) {
-	}
-
-	public String getAuthor() {
-		return null;
-	}
-
-	public void setDate(String revNumber, String value) {
-	}
-
-	public String getDate() {
-		return null;
-	}
-	
-	public void setMessage(String revNumber, String value) {
-	}
-
-	public String getMessage() {
-		return null;
-	}
 }
