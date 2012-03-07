@@ -7,6 +7,7 @@
 package com.semantico.radiators.svn.servlets;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -40,10 +41,10 @@ public class SubversionLogger extends HttpServlet {
 			logPuller = new SVNLogPuller();
 		} catch (SVNException e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new RuntimeException(e1);
 		} catch (TemplateException e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new RuntimeException(e1);
 		}
 
 		//Iterates over the log and converts each SVNEntryLog in turn with the RevisionMaker class.
@@ -53,14 +54,19 @@ public class SubversionLogger extends HttpServlet {
 		}
 
 		//The new collection is passed as a data model to the HTMLMaker class.
-		maker = new HTMLMaker(entries);
+		try {
+			maker = new HTMLMaker(entries);
+		} catch (URISyntaxException e1) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e1);
+		}
 
 		//Fills the page
 		try {
 			maker.fillPage(response.getOutputStream());
 		} catch (TemplateException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -20,14 +22,20 @@ public class HTMLMaker {
 	HashMap<String,Object> dataModel;
 	
 	//should take in a collection (the model) and it should take in a template
-	public HTMLMaker(Collection<FormattedLogEntry> entries) throws IOException {
+	public HTMLMaker(Collection<FormattedLogEntry> entries) throws IOException, URISyntaxException {
 		//A configuration instance for Freemarker.
 		Configuration cfg = new Configuration();
 		//I am letting it know where the template is stored.
-		cfg.setDirectoryForTemplateLoading(new File("/Users/panda/SemanticoRadiators/Alex/SubversionRadiator/"));
+		// move ftl to src/main/resources
+		// getClass().getResource("OpenProjects.ftl")
+		
+		URL resource = getClass().getClassLoader().getResource("OpenProjects.ftl");
+		File parentFile = new File(resource.toURI()).getParentFile();
+		cfg.setDirectoryForTemplateLoading(parentFile);
 		cfg.setObjectWrapper(new DefaultObjectWrapper());
-		//Specify an *.ftl template file. 
+		//Specify an *.ftl template file.
 		htmlPage = cfg.getTemplate("OpenProjects.ftl");
+		//htmlPage = cfg.getTemplate(new String(getClass().getResource("/resources/OpenProjects.flt").toString()));
 		
 		//Add the collection of entries to a Map as a data model.
 		HashMap<String, Object> model = new HashMap<String,Object>();
