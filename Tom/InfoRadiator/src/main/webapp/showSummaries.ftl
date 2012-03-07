@@ -91,57 +91,57 @@
 <p>RT</p>
 <div class="row-fluid">
 <div class="span2"> 
-<div class="ticketID rj1">XXX-12345</div>
+<div class="ticketID rj1">${RTstats[0].ticketNum}</div>
 </div>
 <div class="span7"> 
-<div class="people rj1">People on the Project</div>
+<div class="people rj1">${RTstats[0].summary}</div>
 </div>
 <div class="span3"> 
-<div class="date rj1">12 May</div>
+<div class="date rj1">${RTstats[0].queue}</div>
 </div>	
 </div>
 <div class="row-fluid">
 <div class="span2"> 
-<div class="ticketID rj2">XXX-12345</div>
+<div class="ticketID rj2">${RTstats[1].ticketNum}</div>
 </div>
 <div class="span7"> 
-<div class="people rj2">People on the Project</div>
+<div class="people rj2">${RTstats[1].summary}</div>
 </div>
 <div class="span3"> 
-<div class="date rj2">12 May</div>
+<div class="date rj2">${RTstats[1].queue}</div>
 </div>	
 </div>
 <div class="row-fluid">
 <div class="span2"> 
-<div class="ticketID rj3">XXX-12345</div>
+<div class="ticketID rj3">${RTstats[2].ticketNum}</div>
 </div>
 <div class="span7"> 
-<div class="people rj3">People on the Project</div>
+<div class="people rj3">${RTstats[2].summary}</div>
 </div>
 <div class="span3"> 
-<div class="date rj3">12 May</div>
+<div class="date rj3">${RTstats[2].queue}</div>
 </div>	
 </div>
 <div class="row-fluid">
 <div class="span2"> 
-<div class="ticketID rj4">XXX-12345</div>
+<div class="ticketID rj4">${RTstats[3].ticketNum}</div>
 </div>
 <div class="span7"> 
-<div class="people rj4">People on the Project</div>
+<div class="people rj4">${RTstats[3].summary}</div>
 </div>
 <div class="span3"> 
-<div class="date rj4">12 May</div>
+<div class="date rj4">${RTstats[3].queue}</div>
 </div>	
 </div>
 <div class="row-fluid">
 <div class="span2"> 
-<div class="ticketID rj5">XXX-12345</div>
+<div class="ticketID rj5">${RTstats[4].ticketNum}</div>
 </div>
 <div class="span7"> 
-<div class="people rj5">People on the Project</div>
+<div class="people rj5">${RTstats[4].summary}</div>
 </div>
 <div class="span3"> 
-<div class="date rj5">12 May</div>
+<div class="date rj5">${RTstats[4].queue}</div>
 </div>	
 </div>
 </div>	

@@ -1,14 +1,8 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         version="2.5">
-         
-         
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
         <servlet-name>freemarker</servlet-name>
         <servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>
-        
         <init-param>
             <param-name>TemplatePath</param-name>
             <param-value>/</param-value>
@@ -41,7 +35,7 @@
     </servlet>
     <servlet>
         <servlet-name>JIRAServlet</servlet-name>
-        <servlet-class>tom.control.JIRAServlet</servlet-class>
+        <servlet-class>tom.control.JIRA_RT_Servlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RTServlet</servlet-name>
@@ -59,7 +53,6 @@
         <servlet-name>freemarker</servlet-name>
         <url-pattern>*.ftl</url-pattern>
     </servlet-mapping>
-    
     <session-config>
         <session-timeout>
             30
