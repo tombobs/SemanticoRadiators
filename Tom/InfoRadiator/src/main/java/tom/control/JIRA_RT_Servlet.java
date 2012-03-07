@@ -18,6 +18,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
+import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
 import java.util.*;
@@ -41,7 +43,7 @@ import tom.model.RTdisplay;
  *
  * @author Tom
  */
-public class JIRAServlet extends HttpServlet {
+public class JIRA_RT_Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -63,11 +65,9 @@ public class JIRAServlet extends HttpServlet {
         public X509Certificate[] getAcceptedIssuers() {
             return null;
         }
-
         public void checkClientTrusted(X509Certificate[] certs, String authType) {
             return;
         }
-
         public void checkServerTrusted(X509Certificate[] certs, String authType) {
             return;
         }
@@ -89,8 +89,7 @@ public class JIRAServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {   
         // JIRA  
-            //connect
-            
+            //connect to jira
             URL url = new URL("https://jira.semantico.com/sr/jira.issueviews:searchrequest-rss/temp/SearchRequest.xml?jqlQuery=ORDER+BY+updated+DESC%2C+key+DESC&tempMax=5");
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             String userpassword = "tomr" + ":" + "j1glets";
@@ -107,7 +106,7 @@ public class JIRAServlet extends HttpServlet {
             SyndFeed feed = input.build(new BufferedReader(new InputStreamReader(connection.getInputStream())));
             List<SyndEntry> list = feed.getEntries();
             
-            //create display objects, attach to request
+            //create display objects
             List<JIRAdisplay> JIRAstats = new ArrayList<JIRAdisplay>();
             for (SyndEntry entry : list) {
                 fixDates(entry);
@@ -118,6 +117,7 @@ public class JIRAServlet extends HttpServlet {
                 JIRAdisplay dispObj = new JIRAdisplay(title,summary,entry.getUpdatedDate().toString().substring(0, 16)); 
                 JIRAstats.add(dispObj);
             }
+            //attach to request
             request.setAttribute("JIRAstats",JIRAstats);
        // END JIRA
             
@@ -145,17 +145,19 @@ public class JIRAServlet extends HttpServlet {
             String line=br.readLine(),ticketNum,summary,queue;
             int count = 0;
             while ( (line=br.readLine()) !=null && count<5) {
+                //split line from tsv file into fields
                 String[] fields = line.split("\t");
-                RTdisplay RTdisp = new RTdisplay(fields[0],fields[1],fields[2]);
-                RTstats.add(RTdisp);
+                ticketNum = fields[0];
+                summary = fields[1];
+                queue = fields[2];
+                RTdisplay RTdisp = new RTdisplay(ticketNum,summary,queue); // using tom.model.RTdisplay
+                RTstats.add(RTdisp); // add to vector to pass to template
                 count++;
             }
             request.setAttribute("RTstats", RTstats);
         // END RT
-
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/showSummaries.ftl");
             rd.forward(request, response);  
-
         } 
         catch (IOException ie) {
             throw ie;
@@ -163,11 +165,12 @@ public class JIRAServlet extends HttpServlet {
         catch (FeedException fe) {
             throw new ServletException(fe);
         }
-       
-        //catch (GeneralSecurityException gse) {
-      //      throw new ServletException(gse);
-      //  }
-        catch(Exception e) {}
+        catch (NoSuchAlgorithmException nsae) {
+            throw new ServletException (nsae);
+        }
+        catch (GeneralSecurityException gse) {
+            throw new ServletException (gse);
+        }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
