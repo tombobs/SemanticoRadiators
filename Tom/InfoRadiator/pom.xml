@@ -5,13 +5,13 @@
     <artifactId>jiraradiator</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-  
+
     <parent>
         <groupId>com.semantico.sipp2</groupId>
         <artifactId>sipp2-parent</artifactId>
         <version>0.8-SNAPSHOT</version>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.freemarker</groupId>
@@ -45,14 +45,14 @@
                     <artifactId>commons-logging</artifactId>
                 </exclusion>
             </exclusions>
-	</dependency>
-            
+        </dependency>
+
     </dependencies>
-    
+
     <build>
         <finalName>${project.artifactId}-${project.version}</finalName>
     </build>
-    
+
     <properties>
         <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
