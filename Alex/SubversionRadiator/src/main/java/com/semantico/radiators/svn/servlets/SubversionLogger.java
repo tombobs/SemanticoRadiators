@@ -33,7 +33,9 @@ public class SubversionLogger extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		//A collection to store the converted log entries.
 		Collection<FormattedLogEntry> entries = new ArrayList<FormattedLogEntry>();
+		//Pulls the log.
 		try {
 			logPuller = new SVNLogPuller();
 		} catch (SVNException e1) {
@@ -44,14 +46,16 @@ public class SubversionLogger extends HttpServlet {
 			e1.printStackTrace();
 		}
 
+		//Iterates over the log and converts each SVNEntryLog in turn with the RevisionMaker class.
 		for (SVNLogEntry le : logPuller.returnLog()) {
-			// Because it's static I'm not using an instance, I'm using the
-			// class methods.
+			//Makes a new collection with them
 			entries.add(RevisionMaker.convertEntry(le));
 		}
 
+		//The new collection is passed as a data model to the HTMLMaker class.
 		maker = new HTMLMaker(entries);
 
+		//Fills the page
 		try {
 			maker.fillPage(response.getOutputStream());
 		} catch (TemplateException e) {

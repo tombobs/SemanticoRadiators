@@ -15,7 +15,9 @@ import freemarker.template.TemplateException;
 public class SVNLogPuller {
 
 	SVNRepository repository = null;
+	//The repository URL.
 	String url = "https://svn.semantico.net/repos/main";
+	//Anonymous login for the moment. This appears to function fine over a Semantico network.
 	String username = "anonymous";
 	String password = "anonymous";
 	
@@ -31,17 +33,22 @@ public class SVNLogPuller {
 		ISVNAuthenticationManager authManager = SVNWCUtil.createDefaultAuthenticationManager(username, password);
 		//A pool to add the repository to.
 		DefaultSVNRepositoryPool pool = new DefaultSVNRepositoryPool(authManager, null);
+		//Adds the repository to the pool.
 		repository = pool.createRepository(SVNURL.parseURIEncoded(url), true);
+		//Sets the authentication for the repository.
 		repository.setAuthenticationManager(authManager);		
 	}
 	
 	public Collection<SVNLogEntry> returnLog() {
 		try {
+			//Calculates the last revision number...
 			long latestRev = repository.getLatestRevision();
+			//...and the number of the revision 8 revisions ago.
 			long tenRevs = latestRev - 7;
+			//Pulls the log from the given repository. This warns over Object types but for now functions fine.
 			return repository.log(new String[]{}, null, tenRevs, latestRev, true, false);
 		} catch (SVNException e) {
 			throw new RuntimeException(e);
-		} //This is throwing a warning because of Object types, but this really can't be avoided right now.
+		}
 	}
 }

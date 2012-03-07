@@ -1,3 +1,5 @@
+//A class for the representation of a single revision entry, with al parameters stored at strings.
+
 package com.semantico.radiators.svn;
 
 public class FormattedLogEntry {
@@ -14,6 +16,7 @@ public class FormattedLogEntry {
 		message = msg;
 	}
 
+	//Getter and setter methods automatically recognised by Freemarker in order to fill the *.ftl template file.
 	public String getProject() {
 		return project;
 	}

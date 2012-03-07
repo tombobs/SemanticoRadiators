@@ -21,18 +21,22 @@ public class HTMLMaker {
 	
 	//should take in a collection (the model) and it should take in a template
 	public HTMLMaker(Collection<FormattedLogEntry> entries) throws IOException {
+		//A configuration instance for Freemarker.
 		Configuration cfg = new Configuration();
+		//I am letting it know where the template is stored.
 		cfg.setDirectoryForTemplateLoading(new File("/Users/panda/SemanticoRadiators/Alex/SubversionRadiator/"));
 		cfg.setObjectWrapper(new DefaultObjectWrapper());
+		//Specify an *.ftl template file. 
 		htmlPage = cfg.getTemplate("OpenProjects.ftl");
 		
+		//Add the collection of entries to a Map as a data model.
 		HashMap<String, Object> model = new HashMap<String,Object>();
 		model.put("entries", entries);
 		
 		dataModel = model;
 	}
 
-	//This takes the data-model and the template and merges them together - writes to the System output.
+	//This takes the data-model and the template and merges them together - writes to the output stream specified as an argument. 
 	public void fillPage(OutputStream stream) throws TemplateException, IOException {
 		Writer out = new OutputStreamWriter(stream);
 		htmlPage.process(dataModel,out);
