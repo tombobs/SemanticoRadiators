@@ -2,4 +2,26 @@ Files and documentation for the collective radiators required for different depa
 
 Alexander Hosford, Zsuzsanna Herpai & Tom Roberts - February 2012
 
+Wednesday 7th March
 
+    All of the component parts are working now with live data and the project is coming to close. The project has been handed
+    over to Tom Roberts who is going to take responsibility for the deployment and any further support issues with the project.
+
+    Current Issues;
+
+        There are a few things which have not yet been done and may be worth looking into.
+
+        Within the SVN logging page, there is no capacity for escaping HTML tags or the such. This means that if anyone were to
+        submit a commit message with anything resembling tags, then the output would most likely break and look bad.
+
+        Currently the truncation of long strings in relation to project name, username and message are handled within the class
+        that converts SVNLogEntry objects into FormattedLogEntry objects. It has been suggested that this string truncation should
+        probably be handled by the freemarker template as potentially access to the full data contained in these parameters could be useful.
+
+        Everything is currently within the same Eclipse project, which is setup through Maven so techincally this should be easy
+        enough to port into other IDEs. The two active parts of the project, JIRA/RT and SVN have had their respective pom.xml 
+        and web.xml files integrated.
+
+        A comment that Richard made earlier in the week - It would be nice if the functionality presented by our project was of a
+        common format, i.e. all RSS or etc. This would allow for greater scalability and the ability to port the tempolates to any
+        other type of feed data that we might need to display.
