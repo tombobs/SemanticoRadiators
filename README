@@ -7,9 +7,21 @@ Wednesday 7th March
     All of the component parts are working now with live data and the project is coming to close. The project has been handed
     over to Tom Roberts who is going to take responsibility for the deployment and any further support issues with the project.
 
+    Everything is currently within the same Eclipse project, which is setup through Maven so techincally this should be easy
+    enough to port into other IDEs. The two active parts of the project, JIRA/RT and SVN have had their respective pom.xml 
+    and web.xml files integrated.
+
+    A comment that Richard made earlier in the week - It would be nice if the functionality presented by our project was of a
+    common format, i.e. all RSS or etc. This would allow for greater scalability and the ability to port the tempolates to any
+    other type of feed data that we might need to display.
+
     Current Issues;
 
         There are a few things which have not yet been done and may be worth looking into.
+
+        SVN
+
+        This module is authored by Alexander Hosford.
 
         Within the SVN logging page, there is no capacity for escaping HTML tags or the such. This means that if anyone were to
         submit a commit message with anything resembling tags, then the output would most likely break and look bad.
@@ -18,10 +30,21 @@ Wednesday 7th March
         that converts SVNLogEntry objects into FormattedLogEntry objects. It has been suggested that this string truncation should
         probably be handled by the freemarker template as potentially access to the full data contained in these parameters could be useful.
 
-        Everything is currently within the same Eclipse project, which is setup through Maven so techincally this should be easy
-        enough to port into other IDEs. The two active parts of the project, JIRA/RT and SVN have had their respective pom.xml 
-        and web.xml files integrated.
+        RSS
 
-        A comment that Richard made earlier in the week - It would be nice if the functionality presented by our project was of a
-        common format, i.e. all RSS or etc. This would allow for greater scalability and the ability to port the tempolates to any
-        other type of feed data that we might need to display.
+        As far as the RSS feeds screen goes, this is pretty simple and functions just fine pulling the data. At this stage it is
+        probably more important is to show the title of the post and then the author of the post. Due to the frequency of the updates
+        it is probably more useful for a reader to see who authored a post rather than when it was authored. RSS functionality is
+        provided by a JQuery library, however working RSS pull functionality was working early on using some HTML code.
+
+        JIRA/RT
+
+        Authored by Thomas Roberts, there is currently a small delay in the page load as the code authenticates itself for use with the Jira and RT systems.
+        In order for this to happen I believe Tom has hard coded in his login details to the code - this should probably be changed.
+
+        SIPP2/JENKINS
+
+        This code has been ripped from Dan Shearmur's working page that already exists. The work that has been conducted on this screen
+        is purely a matter of presentation and no changes to the functionality have been made. The styling has been updated to make use
+        of the second version of the Bootstrap CSS framework. Tis has been conducted by Zsuzsanna Herpai who has completed the front-end
+        for the entire project.
