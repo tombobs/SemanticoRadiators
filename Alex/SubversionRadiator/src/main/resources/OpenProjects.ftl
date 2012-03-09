@@ -1,4 +1,4 @@
-		<header class="navbar">
+	<!--	<header class="navbar">
 			<div class="navbar-inner">
 				<div class="progress">
 					<div class="bar notrans"></div>
@@ -7,7 +7,7 @@
 				  <h3 class="container">Open projects<span style="color:#EF6B00"></span></h3>
 				</div>
 			</div>
-		</header>
+	-->	</header>
 		<div class="row-fluid board_svn">
             <#list entries?reverse as entry>
 				<div class="row-fluid" >
