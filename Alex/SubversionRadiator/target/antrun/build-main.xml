@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="maven-antrun-" default="main"  >
 <target name="main">
-  <exec outputproperty="git.describe" dir="/Users/panda/SemanticoRadiators/Alex/SubversionRadiator" executable="git" failonerror="true">
+  <exec outputproperty="git.describe" dir="/home/tom/SemanticoRadiators/Alex/SubversionRadiator" executable="git" failonerror="true">
     <arg line="describe --tags --always --dirty"/>
   </exec>
-  <exec outputproperty="git.lastmod" dir="/Users/panda/SemanticoRadiators/Alex/SubversionRadiator" executable="git" failonerror="true">
+  <exec outputproperty="git.lastmod" dir="/home/tom/SemanticoRadiators/Alex/SubversionRadiator" executable="git" failonerror="true">
     <arg line="log -n 1 --pretty=format:%at"/>
   </exec>
 </target>
