@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="maven-antrun-" default="main"  >
 <target name="main">
+<<<<<<< HEAD
   <exec outputproperty="git.describe" dir="/home/tom/SemanticoRadiators/Alex/SubversionRadiator" executable="git" failonerror="true">
     <arg line="describe --tags --always --dirty"/>
   </exec>
   <exec outputproperty="git.lastmod" dir="/home/tom/SemanticoRadiators/Alex/SubversionRadiator" executable="git" failonerror="true">
     <arg line="log -n 1 --pretty=format:%at"/>
+=======
+  <exec outputproperty="git.describe" dir="C:\Users\Tom\project\semradiators2\Alex\SubversionRadiator" executable="cmd" failonerror="true">
+    <arg line="/c git describe --tags --always --dirty"/>
+  </exec>
+  <exec outputproperty="git.lastmod" dir="C:\Users\Tom\project\semradiators2\Alex\SubversionRadiator" executable="cmd" failonerror="true">
+    <arg line="/c git log -n 1 --pretty=format:%at"/>
+>>>>>>> f750c923cb7205925b91144d27d83a5edcdda235
   </exec>
 </target>
 </project>

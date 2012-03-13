@@ -1,0 +1,44 @@
+Mar 08, 2012 3:12:33 PM org.apache.catalina.core.AprLifecycleListener init
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jdk1.7.0_01\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files(x86)\apache-maven-3.0.4\bin;C:\Program Files (x86)\Git\cmd;c:\program files (x86)\apache-maven-3.0.4\bin;;.
+Mar 08, 2012 3:12:33 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-8080"]
+Mar 08, 2012 3:12:33 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-bio-8009"]
+Mar 08, 2012 3:12:33 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 454 ms
+Mar 08, 2012 3:12:33 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Mar 08, 2012 3:12:33 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.22
+Mar 08, 2012 3:12:33 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor InfoRadiator.xml from C:\Users\Tom\project\semradiators2\Tom\Tomcat\conf\Catalina\localhost
+Mar 08, 2012 3:12:34 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor manager.xml from C:\Users\Tom\project\semradiators2\Tom\Tomcat\conf\Catalina\localhost
+Mar 08, 2012 3:12:34 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-8080"]
+Mar 08, 2012 3:12:34 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["ajp-bio-8009"]
+Mar 08, 2012 3:12:34 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 548 ms
+Mar 08, 2012 3:12:35 PM org.apache.catalina.startup.HostConfig checkResources
+INFO: Undeploying context [/InfoRadiator]
+Mar 08, 2012 3:12:35 PM org.apache.catalina.startup.HostConfig deployDescriptor
+INFO: Deploying configuration descriptor InfoRadiator.xml from C:\Users\Tom\project\semradiators2\Tom\Tomcat\conf\Catalina\localhost
+Mar 08, 2012 3:12:35 PM org.apache.catalina.util.LifecycleBase start
+INFO: The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/InfoRadiator]] after start() had already been called. The second call will be ignored.
+Mar 08, 2012 3:13:40 PM org.apache.catalina.core.StandardServer await
+INFO: A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+Mar 08, 2012 3:13:40 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-bio-8080"]
+Mar 08, 2012 3:13:41 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["ajp-bio-8009"]
+Mar 08, 2012 3:13:42 PM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service Catalina
+Mar 08, 2012 3:13:42 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-bio-8080"]
+Mar 08, 2012 3:13:42 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["ajp-bio-8009"]
+Mar 08, 2012 3:13:42 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-bio-8080"]
+Mar 08, 2012 3:13:42 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["ajp-bio-8009"]

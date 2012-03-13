@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+<!--
 <header class="navbar">
 <div class="navbar-inner">
 <div class="progress">
@@ -23,7 +23,7 @@
 </div>
 </div>
 </header>
-
+-->
 <center>
 <div class="row-fluid board_jira">
 <div class="span12"> 
