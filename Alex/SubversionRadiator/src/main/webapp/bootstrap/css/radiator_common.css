@@ -31,11 +31,11 @@ h3.container {
     height: 2px;
     background-color: #ef6b00;
     background-image: none;
-    -webkit-transition: width 10s linear;
-    -moz-transition: width 10s linear;
-    -ms-transition: width 10s linear;
-    -o-transition: width 10s linear;
-    transition: width 10s linear;
+    -webkit-transition: width 20s linear;
+    -moz-transition: width 20s linear;
+    -ms-transition: width 20s linear;
+    -o-transition: width 20s linear;
+    transition: width 20s linear;
 }
 
 .progress .bar.hide {

@@ -1,4 +1,4 @@
-// JIRA
+//JIRA
 // connect to jira
 /* URL url = new URL("https://jira.semantico.com/sr/jira.issueviews:searchrequest-rss/temp/SearchRequest.xml?jqlQuery=status+%3D+Open&tempMax=5");
 disableCertificateValidation();
