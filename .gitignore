@@ -1,4 +1,5 @@
 .DS_Store
 Alex/SubversionRadiator/target
 .project
-/Tom/InfoRadiator/target/
+Tom/InfoRadiator/target/
+**/target
