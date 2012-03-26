@@ -78,7 +78,7 @@ public class JIRA_RT_Servlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		try {
-            // JIRA
+            /* JIRA
             WebClient wc2 = new WebClient();
             disableCertificateValidation();
             wc2.setJavaScriptEnabled(false);
@@ -98,8 +98,8 @@ public class JIRA_RT_Servlet extends HttpServlet {
             hti.setValueAttribute("j1glets");
             HtmlSubmitInput hsi = (HtmlSubmitInput) hf.getInputByName("login");
             page = (HtmlPage) hsi.click();
-            List<?> li = page.getByXPath("//div");
-            out.print(li.size());
+           // List<?> li = page.getByXPath("//div");
+           // out.print(li.size());
             /*URL url = new URL("https://jira.semantico.com/sr/jira.issueviews:searchrequest-comments-rss/temp/SearchRequest.xml?jqlQuery=issuetype+%3D+Bug+AND+status+%3D+Open+ORDER+BY+updated+DESC%2C+key+DESC&tempMax=5");
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             connection.connect();
@@ -157,13 +157,13 @@ public class JIRA_RT_Servlet extends HttpServlet {
 			request.setAttribute("RTstats", RTstats);
 
 			// send to freemarker
-			//RequestDispatcher rd = request.getRequestDispatcher("/showSummaries.ftl");
-			//rd.forward(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("/showSummaries.ftl");
+			rd.forward(request, response);
 		    } catch (IOException ie) {  throw ie; }
             catch (NoSuchAlgorithmException nsae) { throw new ServletException(nsae); }
             catch (GeneralSecurityException gse) { throw new ServletException(gse); }
             //catch (FeedException fe) { throw new ServletException(fe); }
-            catch (JaxenException je) {}
+            //catch (JaxenException je) {}
     }
 	// <editor-fold defaultstate="collapsed"
 	// desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

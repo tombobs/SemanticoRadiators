@@ -44,6 +44,10 @@
 	font-size: 22px; 
 }
 
+.row-fluid {
+    vertical-align: middle;
+}
+
 .people, .date {
 	text-align: center;
 	padding-left: 4px;
