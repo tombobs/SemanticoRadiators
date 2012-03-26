@@ -1,21 +1,23 @@
-.board_feed {
-	width: 94%;		
-/*	grey gradient: (top, #dfe5f3, #c0d0e0); */
-	background-image: -moz-linear-gradient(top, #dffbff, #c6e7ef);
-	background-image: -ms-linear-gradient(top, #dffbff, #c6e7ef);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dffbff), to(#c6e7ef));
-	background-image: -webkit-linear-gradient(top, #dffbff, #c6e7ef);
-	background-image: -o-linear-gradient(top, #dffbff, #c6e7ef);
-	background-image: linear-gradient(top, #dffbff, #c6e7ef);
-	background-repeat: repeat-x;
-	padding: 20px;
-	border: 1px solid rgb(50,50,50);
-	-webkit-border-radius: 20px;
-	-moz-border-radius: 20px;
-	border-radius: 20px;
-	text-align: left;
-}
 
+
+.board_feed {
+    width: 94%;
+    /*	blue gradient: (top, #dffbff, #c6e7ef); */
+    /*	grey gradient: (top, #dfe5f3, #c0d0e0); */
+    background-image: -moz-linear-gradient(top, #dfe5f3, #c0d0e0);
+    background-image: -ms-linear-gradient(top, #dfe5f3, #c0d0e0);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dfe5f3), to(#c0d0e0));
+    background-image: -webkit-linear-gradient(top, #dfe5f3, #c0d0e0);
+    background-image: -o-linear-gradient(top, #dfe5f3, #c0d0e0);
+    background-image: linear-gradient(top, #dfe5f3, #c0d0e0);
+    background-repeat: repeat-x;
+    padding: 20px;
+    border: 1px solid rgb(50,50,50);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-align: left;
+}
 .rssHeader {
 	display: none;
 	/*font-weight: bold;
