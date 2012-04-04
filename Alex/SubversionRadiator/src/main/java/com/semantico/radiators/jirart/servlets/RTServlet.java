@@ -5,7 +5,7 @@ disableCertificateValidation();
 
 
 HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-String userpassword = "tomr" + ":" + "j1glets";
+
 String encodedAuthorization = Base64.encodeBase64(userpassword.getBytes()).toString();
 connection.setRequestProperty("Authorization", "Basic "+ encodedAuthorization);
 connection.setRequestMethod("GET");
@@ -36,7 +36,7 @@ HtmlForm hf = (HtmlForm) page.getHtmlElementById("login-form");
 HtmlTextInput hti = (HtmlTextInput) hf.getInputByName("os_username");
 hti.setValueAttribute("tomr");
 HtmlPasswordInput hpi = (HtmlPasswordInput) hf.getInputByName("os_password");
-hti.setValueAttribute("j1glets");
+
 HtmlSubmitInput hsi = (HtmlSubmitInput) hf.getInputByName("login");
 hsi.click();
 */

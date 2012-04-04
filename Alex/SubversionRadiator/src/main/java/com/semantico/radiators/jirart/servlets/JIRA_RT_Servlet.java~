@@ -93,9 +93,9 @@ public class JIRA_RT_Servlet extends HttpServlet {
                     .getPage("https://jira.semantico.com/login.jsp");
             HtmlForm hf = (HtmlForm) page.getHtmlElementById("login-form");
             HtmlTextInput hti = (HtmlTextInput) hf.getInputByName("os_username");
-            hti.setValueAttribute(System.getProperty("RTlogin"));
+            hti.setValueAttribute("tomr");
             HtmlPasswordInput hpi = (HtmlPasswordInput) hf.getInputByName("os_password");
-            hti.setValueAttribute(System.getProperty("RTpw"));
+            hti.setValueAttribute(System.getProperty("RTpw");
             HtmlSubmitInput hsi = (HtmlSubmitInput) hf.getInputByName("login");
             page = (HtmlPage) hsi.click();
            // List<?> li = page.getByXPath("//div");
@@ -128,8 +128,8 @@ public class JIRA_RT_Servlet extends HttpServlet {
 			HtmlTextInput username2 = (HtmlTextInput) loginForm2.getInputByName("user");
 			HtmlPasswordInput password2 = (HtmlPasswordInput) loginForm2.getInputByName("pass");
 			HtmlSubmitInput submitButton2 = (HtmlSubmitInput) loginForm2.getInputByValue("Login");
-			username2.setValueAttribute(System.getProperty("JIRAlogin"));
-            		password2.setValueAttribute(System.getProperty("JIRApw"));
+			username2.setValueAttribute("tomr");
+            password2.setValueAttribute(System.getProperty("JIRApw"));
 			page2 = (HtmlPage) submitButton2.click();
 
 			// read tsv file
