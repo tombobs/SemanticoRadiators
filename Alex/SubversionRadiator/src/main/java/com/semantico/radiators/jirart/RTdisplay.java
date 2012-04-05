@@ -4,7 +4,7 @@ package com.semantico.radiators.jirart;
 
 public class RTdisplay {
      private String ticketNum,summary,queue;
-     
+
      //CONSTRUCTOR
      public RTdisplay (String ticketNum,String summary, String queue) {
         this.ticketNum=ticketNum;
